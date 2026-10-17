@@ -14,6 +14,8 @@ export interface Project {
   tags: string[];
   url?: string; // Only set when a real public URL is confirmed
   featured?: boolean;
+  role?: string;
+  details?: string[];
 }
 
 // ─── Experience ────────────────────────────────────────────────────────────────

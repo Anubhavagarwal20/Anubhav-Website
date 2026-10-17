@@ -152,9 +152,16 @@ export const projects: Project[] = [
     number: '01',
     name: 'GEO SEO Lab',
     category: 'SEO / GEO / Content Strategy',
+    role: 'SEO & Generative Engine Optimization (Part-time)',
     summary:
       'SEO and AI-search-focused content and visibility work, including keyword strategies, competitor research, educational content, LinkedIn creatives, and social media campaigns.',
     tags: ['SEO', 'Generative Engine Optimization', 'AI Search Visibility', 'Content Strategy', 'Competitor Research'],
+    details: [
+      'Researched competitor visibility patterns across emerging AI search platforms.',
+      'Developed content strategies aligned with user search intent and informational queries.',
+      'Designed social media creatives and educational LinkedIn assets to communicate technical SEO concepts.',
+      'Contributed to brand discovery workflows bridging traditional SEO and Generative Engine Optimization.',
+    ],
     featured: true,
   },
   {
@@ -162,9 +169,16 @@ export const projects: Project[] = [
     number: '02',
     name: 'Chloia',
     category: 'E-commerce / Amazon / Shopify',
+    role: 'Amazon Listing Intern → Freelance E-commerce Specialist',
     summary:
       'E-commerce listing and catalog work spanning Amazon listing creation, keyword optimization, product information accuracy, product images, Shopify operations, and marketplace optimization.',
     tags: ['Amazon SEO', 'Shopify', 'Product Listings', 'Keyword Research', 'Catalog Management'],
+    details: [
+      'Created and optimized product listings on Amazon with relevant search terms and attributes.',
+      'Structured clear titles, high-converting bullet points, and optimized product information.',
+      'Managed catalog data, product variations, and image asset consistency.',
+      'Extended e-commerce support to Shopify store catalog management and marketplace SEO.',
+    ],
     featured: true,
   },
   {
@@ -172,18 +186,32 @@ export const projects: Project[] = [
     number: '03',
     name: 'Sri Ganpati Collection',
     category: 'Digital Marketing / Paid Campaigns / Social Media',
+    role: 'Marketing & Digital Presence',
     summary:
       'Digital marketing support involving website management, social media, AI-assisted product creatives, Meta Ads, and campaign performance monitoring.',
     tags: ['Digital Marketing', 'Meta Ads', 'Social Media', 'Creative Strategy', 'Website Management'],
+    details: [
+      'Managed store website updates, content maintenance, and product presentation.',
+      'Created AI-assisted product imagery and visual creative variations for social channels.',
+      'Configured and monitored Meta Ads campaigns to track ad impressions and performance.',
+      'Coordinated day-to-day social media publishing and promotional messaging.',
+    ],
   },
   {
     id: 4,
     number: '04',
     name: 'Ray Talent Hunt',
     category: 'Website Development / Digital Marketing',
+    role: 'Freelance Digital Marketing & Web Development',
     summary:
       'Website development and management combined with social media support and day-to-day digital marketing activities.',
     tags: ['Website Development', 'Website Management', 'Social Media', 'Digital Marketing'],
+    details: [
+      'Developed and maintained the brand website to ensure clean layout and responsiveness.',
+      'Managed digital presence and day-to-day operational marketing activities.',
+      'Created social media posts and community communication materials.',
+      'Ensured digital brand consistency across web pages and promotional touchpoints.',
+    ],
   },
 ];
 

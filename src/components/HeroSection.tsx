@@ -1,5 +1,4 @@
-import { useReducedMotion } from 'framer-motion';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { PrimaryButton, SecondaryButton } from './ui/Buttons';
 
@@ -118,6 +117,12 @@ function FloatingChip({ label, x, y, delay, color, shouldReduce }: FloatingChipP
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 export function HeroSection() {
   const shouldReduce = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   const containerVariants = {
     hidden: {},
@@ -126,12 +131,14 @@ export function HeroSection() {
     },
   };
 
+  const easing = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
   const itemVariants = {
     hidden: { opacity: 0, y: shouldReduce ? 0 : 28 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: shouldReduce ? 0 : 0.7, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: shouldReduce ? 0 : 0.7, ease: easing },
     },
   };
 
@@ -141,6 +148,19 @@ export function HeroSection() {
   };
 
   return (
+    <>
+      {/* Scroll progress bar — fixed at top of page */}
+      {!shouldReduce && (
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-[2px] z-[60] origin-left"
+          style={{
+            scaleX,
+            background: 'linear-gradient(90deg, #4F8CFF 0%, #4DE2FF 50%, #9B7BFF 100%)',
+          }}
+          aria-hidden="true"
+        />
+      )}
+
     <section
       id="hero"
       className="relative min-h-[100svh] flex items-center pt-20 pb-16 overflow-hidden"
@@ -286,5 +306,6 @@ export function HeroSection() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

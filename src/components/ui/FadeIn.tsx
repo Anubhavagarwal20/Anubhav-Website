@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
-import { motion, useReducedMotion, Variants } from 'framer-motion';
+import type { ReactNode } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 
 interface FadeInProps {
   children: ReactNode;
@@ -21,6 +22,7 @@ export function FadeIn({
   once = true,
 }: FadeInProps) {
   const shouldReduce = useReducedMotion();
+  const easing = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
   const variants: Variants = {
     hidden: {
@@ -35,7 +37,7 @@ export function FadeIn({
       transition: {
         duration: shouldReduce ? 0 : duration,
         delay: shouldReduce ? 0 : delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: easing,
       },
     },
   };

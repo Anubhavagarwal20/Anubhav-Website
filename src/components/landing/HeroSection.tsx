@@ -104,16 +104,21 @@ export function HeroSection() {
       </FadeIn>
 
       {/* ─── Hero Heading (Background) ─── */}
-      <div className="w-full overflow-hidden flex justify-center items-center mt-3 sm:mt-2 md:-mt-4 select-none pointer-events-none z-0 px-2">
+      <div className="w-full overflow-hidden flex justify-center items-center mt-1 sm:mt-0 md:-mt-3 select-none pointer-events-none z-0 px-2">
         <FadeIn delay={0.15} y={40} className="w-full text-center">
-          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[13.5vw] sm:text-[15.5vw] md:text-[16.5vw] lg:text-[18vw]">
-            I&apos;M ANUBHAV
+          <h1 className="hero-heading font-black uppercase tracking-tight leading-[0.86] text-center flex flex-col items-center select-none">
+            <span className="block text-[12vw] sm:text-[13vw] md:text-[14vw] lg:text-[15vw]">
+              HI, I&apos;M
+            </span>
+            <span className="block text-[14vw] sm:text-[15.5vw] md:text-[17vw] lg:text-[18.5vw] tracking-tighter">
+              ANUBHAV
+            </span>
           </h1>
         </FadeIn>
       </div>
 
       {/* ─── Hero Portrait ─── */}
-      <div className="absolute left-1/2 -translate-x-1/2 z-10 top-[48%] -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-auto flex justify-center items-end">
+      <div className="absolute left-1/2 -translate-x-1/2 z-10 top-[50%] -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-auto flex justify-center items-end">
         <FadeIn delay={0.6} y={30}>
           <Magnet
             padding={120}

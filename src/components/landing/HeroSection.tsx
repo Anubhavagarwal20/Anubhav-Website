@@ -13,7 +13,7 @@ const navLinks = [
 
 export function HeroSection() {
   return (
-    <section className="h-screen w-full flex flex-col justify-between relative overflow-x-clip bg-[#0C0C0C]">
+    <section className="min-h-screen h-[100dvh] w-full flex flex-col justify-between relative overflow-x-clip bg-[#0C0C0C]">
       {/* ─── Navbar ─── */}
       <FadeIn delay={0} y={-20} className="w-full z-20">
         <header className="w-full px-6 md:px-10 pt-6 md:pt-8">
@@ -25,7 +25,7 @@ export function HeroSection() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.35rem] transition-opacity duration-200 hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D7E2EA] rounded"
+                className="text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.35rem] transition-opacity duration-200 hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D7E2EA] rounded py-1 px-1 sm:px-2"
               >
                 {link.label}
               </a>
@@ -55,6 +55,9 @@ export function HeroSection() {
             <img
               src={heroAvatar}
               alt="Anubhav Agarwal — 3D Avatar Portrait"
+              width={520}
+              height={520}
+              fetchPriority="high"
               className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] object-contain select-none pointer-events-none drop-shadow-2xl"
               draggable={false}
             />

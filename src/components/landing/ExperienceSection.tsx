@@ -199,7 +199,7 @@ export function ExperienceSection() {
                       {item.period}
                     </span>
                     {item.dateNote && (
-                      <span className="text-[11px] font-light text-[#D7E2EA]/40 italic">
+                      <span className="text-[11px] font-light text-[#D7E2EA]/70 italic">
                         {item.dateNote}
                       </span>
                     )}
@@ -253,7 +253,7 @@ export function ExperienceSection() {
           <FadeIn delay={0.2} y={30}>
             <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between">
               <div>
-                <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block mb-2">
+                <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block mb-2">
                   Academic Credentials
                 </span>
                 <h3 className="font-black uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA] mb-6">
@@ -277,7 +277,7 @@ export function ExperienceSection() {
                       <p className="font-light text-sm text-[#D7E2EA]/75 mt-1">
                         {edu.institution}
                       </p>
-                      <span className="text-xs font-light text-[#D7E2EA]/50 block mt-1">
+                      <span className="text-xs font-light text-[#D7E2EA]/70 block mt-1">
                         {edu.period}
                       </span>
                     </div>
@@ -291,7 +291,7 @@ export function ExperienceSection() {
           <FadeIn delay={0.3} y={30}>
             <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between">
               <div>
-                <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block mb-2">
+                <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block mb-2">
                   Campus &amp; Community
                 </span>
                 <h3 className="font-black uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA] mb-6">

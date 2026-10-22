@@ -65,7 +65,7 @@ export function ContactSection() {
             <FadeIn delay={0.1} y={30}>
               <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col gap-8 h-full">
                 <div>
-                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block mb-2">
+                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block mb-2">
                     Direct Contact
                   </span>
                   <h3 className="font-medium uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA]">
@@ -78,7 +78,7 @@ export function ContactSection() {
 
                 {/* Email Box */}
                 <div className="flex flex-col gap-2">
-                  <span className="text-xs font-light uppercase tracking-wider text-[#D7E2EA]/50">
+                  <span className="text-xs font-light uppercase tracking-wider text-[#D7E2EA]/70">
                     Email Address
                   </span>
                   <div className="flex items-center justify-between gap-2 p-3 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15">
@@ -113,7 +113,7 @@ export function ContactSection() {
 
                 {/* Primary & Secondary CTAs / Links */}
                 <div className="flex flex-col gap-3">
-                  <span className="text-xs font-light uppercase tracking-wider text-[#D7E2EA]/50">
+                  <span className="text-xs font-light uppercase tracking-wider text-[#D7E2EA]/70">
                     Professional Networks
                   </span>
                   <div className="flex flex-col sm:flex-row gap-3">
@@ -166,7 +166,7 @@ export function ContactSection() {
             <FadeIn delay={0.2} y={30}>
               <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-8 h-full">
                 <div className="flex flex-col gap-4">
-                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block">
+                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block">
                     1-on-1 Consultation & Discovery
                   </span>
                   <h3 className="font-medium uppercase tracking-tight text-2xl sm:text-4xl text-[#D7E2EA]">
@@ -230,22 +230,22 @@ export function ContactSection() {
         </div>
 
         {/* Minimal Footer */}
-        <div className="pt-8 border-t border-[#D7E2EA]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#D7E2EA]/50">
+        <div className="pt-8 border-t border-[#D7E2EA]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#D7E2EA]/75">
           <p>© {new Date().getFullYear()} Anubhav Agarwal. All rights reserved.</p>
           <div className="flex items-center gap-6 uppercase tracking-wider">
-            <a href="#about" className="hover:text-[#D7E2EA] transition-colors">
+            <a href="#about" className="hover:text-white transition-colors">
               About
             </a>
-            <a href="#services" className="hover:text-[#D7E2EA] transition-colors">
+            <a href="#services" className="hover:text-white transition-colors">
               Services
             </a>
-            <a href="#projects" className="hover:text-[#D7E2EA] transition-colors">
+            <a href="#projects" className="hover:text-white transition-colors">
               Projects
             </a>
-            <a href="#experience" className="hover:text-[#D7E2EA] transition-colors">
+            <a href="#experience" className="hover:text-white transition-colors">
               Experience
             </a>
-            <a href="#contact" className="hover:text-[#D7E2EA] transition-colors">
+            <a href="#contact" className="hover:text-white transition-colors">
               Contact
             </a>
           </div>

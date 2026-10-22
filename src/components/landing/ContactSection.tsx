@@ -26,6 +26,12 @@ export function ContactSection() {
   const targetEmail = 'anubhavagarwal2020@gmail.com';
   const linkedinUrl = 'https://www.linkedin.com/in/anubhavagarwal20/';
 
+  // To connect Web3Forms or Formspree directly:
+  // 1. Web3Forms (Free, instant key at web3forms.com): put key here
+  const web3formsAccessKey = '' as string; 
+  // 2. Formspree (Free form at formspree.io): put endpoint id here
+  const formspreeEndpoint = '' as string;
+
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText(targetEmail);
@@ -50,25 +56,49 @@ export function ContactSection() {
     setSubmissionSuccess(null);
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+      let endpoint = `https://formsubmit.co/ajax/${targetEmail}`;
+      let payload: Record<string, string> = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
+        _subject: `New Portfolio Message from ${formData.name.trim()}`,
+        _captcha: 'false',
+        _template: 'table',
+      };
+
+      if (web3formsAccessKey) {
+        endpoint = 'https://api.web3forms.com/submit';
+        payload = {
+          access_key: web3formsAccessKey,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+          subject: `New Portfolio Message from ${formData.name.trim()}`,
+          from_name: formData.name.trim(),
+        };
+      } else if (formspreeEndpoint) {
+        endpoint = formspreeEndpoint.startsWith('http')
+          ? formspreeEndpoint
+          : `https://formspree.io/f/${formspreeEndpoint}`;
+        payload = {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        };
+      }
+
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          message: formData.message.trim(),
-          _subject: `New Portfolio Message from ${formData.name.trim()}`,
-          _captcha: 'false',
-          _template: 'table',
-        }),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json().catch(() => null);
 
-      if (response.ok && (!data || data.success === 'true' || data.success === true || data.message)) {
+      if (response.ok && (!data || data.success === 'true' || data.success === true || data.ok || data.message)) {
         setSubmissionSuccess(true);
         setStatusMessage(
           `Thank you, ${formData.name.trim()}! Your message has been sent directly to ${targetEmail}.`

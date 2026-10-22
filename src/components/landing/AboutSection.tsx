@@ -1,6 +1,5 @@
 import { FadeIn } from '../ui/FadeIn';
 import { AnimatedText } from '../ui/AnimatedText';
-import { SpotlightCard } from '../ui/SpotlightCard';
 
 export function AboutSection() {
   const aboutText =
@@ -88,38 +87,8 @@ export function AboutSection() {
           style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.25rem)' }}
         />
 
-        {/* ─── Spotlight Stat Cards ─── */}
-        <FadeIn delay={0.2} y={20} className="w-full mt-10 sm:mt-12">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto w-full">
-            <SpotlightCard className="p-5 text-center">
-              <span className="font-black text-2xl sm:text-3xl lg:text-4xl text-[#D7E2EA] font-mono block">
-                2X ROI
-              </span>
-              <span className="text-xs uppercase tracking-wider text-[#D7E2EA]/70 mt-1 block font-light">
-                Performance Campaigns
-              </span>
-            </SpotlightCard>
-            <SpotlightCard className="p-5 text-center">
-              <span className="font-black text-2xl sm:text-3xl lg:text-4xl text-[#D7E2EA] font-mono block">
-                1,000+
-              </span>
-              <span className="text-xs uppercase tracking-wider text-[#D7E2EA]/70 mt-1 block font-light">
-                Leads Generated
-              </span>
-            </SpotlightCard>
-            <SpotlightCard className="p-5 text-center">
-              <span className="font-black text-2xl sm:text-3xl lg:text-4xl text-[#D7E2EA] font-mono block">
-                MBA &apos;27
-              </span>
-              <span className="text-xs uppercase tracking-wider text-[#D7E2EA]/70 mt-1 block font-light">
-                MAIT Rohini, Delhi
-              </span>
-            </SpotlightCard>
-          </div>
-        </FadeIn>
-
-        {/* Gap between stats block and button */}
-        <div className="h-10 sm:h-14 md:h-16" aria-hidden="true" />
+        {/* Gap between text block and button */}
+        <div className="h-14 sm:h-18 md:h-20" aria-hidden="true" />
 
         {/* CTA Link */}
         <FadeIn delay={0.25} y={20}>

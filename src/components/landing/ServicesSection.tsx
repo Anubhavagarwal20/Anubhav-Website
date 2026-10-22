@@ -68,8 +68,7 @@ export function ServicesSection() {
               className="w-full"
             >
               <div
-                data-cursor="SERVICE"
-                className={`py-8 sm:py-10 md:py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 md:gap-14 transition-all duration-300 hover:translate-x-2 group cursor-pointer ${
+                className={`py-8 sm:py-10 md:py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 md:gap-14 ${
                   index !== 0 ? 'border-t border-[rgba(12,12,12,0.15)]' : ''
                 }`}
               >

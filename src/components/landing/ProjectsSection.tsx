@@ -106,8 +106,7 @@ function Card({ project, index, totalCards }: CardProps) {
           scale,
           top: `${index * 24}px`,
         }}
-        data-cursor="PROJECT ↗"
-        className="relative w-full rounded-[36px] sm:rounded-[48px] md:rounded-[56px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-5 sm:p-7 md:p-9 flex flex-col justify-between gap-6 overflow-hidden shadow-2xl transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(215,226,234,0.1)] group"
+        className="relative w-full rounded-[36px] sm:rounded-[48px] md:rounded-[56px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-5 sm:p-7 md:p-9 flex flex-col justify-between gap-6 overflow-hidden shadow-2xl"
       >
         {/* ─── Top Row: Meta & Header ─── */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-2 border-b border-[#D7E2EA]/10">

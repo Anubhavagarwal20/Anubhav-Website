@@ -1,4 +1,5 @@
 import { FadeIn } from '../ui/FadeIn';
+import { ContactButton } from '../ui/ContactButton';
 import { Magnet } from '../ui/Magnet';
 import heroAvatar from '../../assets/avatar.png';
 
@@ -12,12 +13,9 @@ const navLinks = [
 
 export function HeroSection() {
   return (
-    <section
-      className="min-h-screen w-full flex flex-col justify-between relative overflow-x-clip bg-[#0C0C0C]"
-      aria-labelledby="hero-title"
-    >
+    <section className="h-screen w-full flex flex-col justify-between relative overflow-x-clip bg-[#0C0C0C]">
       {/* ─── Navbar ─── */}
-      <FadeIn delay={0} y={-20} className="w-full z-30">
+      <FadeIn delay={0} y={-20} className="w-full z-20">
         <header className="w-full px-6 md:px-10 pt-6 md:pt-8">
           <nav
             aria-label="Main Navigation"
@@ -36,26 +34,18 @@ export function HeroSection() {
         </header>
       </FadeIn>
 
-      {/* ─── Hero Heading & Eyebrow ─── */}
-      <div className="w-full px-6 md:px-10 mt-6 sm:mt-8 md:mt-4 text-center z-10 select-none">
-        <FadeIn delay={0.1} y={20}>
-          <p className="text-xs sm:text-sm font-light uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#D7E2EA]/70 mb-3 sm:mb-4">
-            SEO • GEO • E-commerce • Performance Marketing
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.15} y={30}>
-          <h1
-            id="hero-title"
-            className="hero-heading font-black uppercase tracking-tight leading-[0.95] max-w-5xl mx-auto text-[8.5vw] sm:text-[6.5vw] md:text-[5vw] lg:text-[3.9rem] xl:text-[4.5rem]"
-          >
-            Digital Marketing Specialist in SEO, GEO &amp; E-commerce
+      {/* ─── Hero Heading (Background) ─── */}
+      <div className="w-full overflow-hidden flex justify-center items-center mt-6 sm:mt-4 md:-mt-5 select-none pointer-events-none z-0">
+        <FadeIn delay={0.15} y={40} className="w-full text-center">
+          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[12vw] sm:text-[13.5vw] md:text-[15vw] lg:text-[16vw]">
+            Hi, i&apos;m anubhav
           </h1>
         </FadeIn>
       </div>
 
       {/* ─── Hero Portrait ─── */}
-      <div className="relative sm:absolute sm:left-1/2 sm:-translate-x-1/2 z-10 my-4 sm:my-0 sm:bottom-0 pointer-events-auto flex justify-center">
-        <FadeIn delay={0.5} y={30}>
+      <div className="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-auto">
+        <FadeIn delay={0.6} y={30}>
           <Magnet
             padding={150}
             strength={3}
@@ -65,7 +55,7 @@ export function HeroSection() {
             <img
               src={heroAvatar}
               alt="Anubhav Agarwal — 3D Avatar Portrait"
-              className="w-[240px] sm:w-[320px] md:w-[380px] lg:w-[440px] object-contain select-none pointer-events-none drop-shadow-2xl opacity-90 sm:opacity-100"
+              className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] object-contain select-none pointer-events-none drop-shadow-2xl"
               draggable={false}
             />
           </Magnet>
@@ -73,35 +63,20 @@ export function HeroSection() {
       </div>
 
       {/* ─── Bottom Bar ─── */}
-      <div className="w-full px-6 md:px-10 pb-8 sm:pb-10 md:pb-12 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 relative z-20">
-        {/* Left: Supporting Copy */}
+      <div className="w-full px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 flex justify-between items-end relative z-20">
+        {/* Left: Paragraph text */}
         <FadeIn delay={0.35} y={20}>
-          <div className="max-w-[320px] sm:max-w-[380px] md:max-w-[440px] flex flex-col gap-2">
-            <p className="text-[#D7E2EA] font-light text-xs sm:text-sm leading-relaxed">
-              I help businesses improve online discoverability, strengthen product visibility, and make data-informed marketing decisions through SEO, AI search optimization, e-commerce operations, content strategy, and performance marketing.
-            </p>
-            <p className="text-[#D7E2EA]/75 font-light text-xs sm:text-sm leading-relaxed hidden sm:block">
-              I&apos;m Anubhav Agarwal, an MBA candidate with hands-on experience across digital marketing and e-commerce projects.
-            </p>
-          </div>
+          <p
+            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[170px] sm:max-w-[240px] md:max-w-[300px]"
+            style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
+          >
+            Digital Marketer &amp; MBA Candidate specializing in SEO, GEO, E-commerce &amp; Performance Marketing
+          </p>
         </FadeIn>
 
-        {/* Right: CTAs */}
+        {/* Right: Contact button */}
         <FadeIn delay={0.5} y={20}>
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
-            <a
-              href="#projects"
-              className="inline-flex items-center justify-center rounded-full bg-[#D7E2EA] text-[#0C0C0C] font-semibold uppercase tracking-wider px-6 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm transition-all duration-200 hover:bg-white hover:scale-[1.02] active:scale-[0.98] text-center"
-            >
-              Explore My Projects
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-wider px-6 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm transition-all duration-200 hover:bg-[#D7E2EA]/10 active:scale-[0.98] text-center"
-            >
-              Let&apos;s Connect
-            </a>
-          </div>
+          <ContactButton href="#contact" />
         </FadeIn>
       </div>
     </section>

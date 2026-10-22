@@ -70,7 +70,7 @@ export function HeroSection() {
             className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[170px] sm:max-w-[240px] md:max-w-[300px]"
             style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
           >
-            Digital Marketer &amp; MBA Candidate specializing in SEO, GEO, E-commerce &amp; Performance Marketing
+            Digital Marketer specializing in SEO, GEO, E-commerce &amp; Performance Marketing
           </p>
         </FadeIn>
 

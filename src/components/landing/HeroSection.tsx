@@ -37,8 +37,8 @@ export function HeroSection() {
       {/* ─── Hero Heading (Background) ─── */}
       <div className="w-full overflow-hidden flex justify-center items-center mt-6 sm:mt-4 md:-mt-5 select-none pointer-events-none z-0">
         <FadeIn delay={0.15} y={40} className="w-full text-center">
-          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[12vw] sm:text-[13.5vw] md:text-[15vw] lg:text-[16vw]">
-            Hi, i&apos;m anubhav
+          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[14vw] sm:text-[15.5vw] md:text-[16.5vw] lg:text-[18vw]">
+            I&apos;M ANUBHAV
           </h1>
         </FadeIn>
       </div>

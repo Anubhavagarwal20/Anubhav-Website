@@ -3,7 +3,7 @@ import { AnimatedText } from '../ui/AnimatedText';
 
 export function AboutSection() {
   const aboutText =
-    "I'm Anubhav Agarwal, a digital marketing professional and MBA candidate at Maharaja Agrasen Institute of Technology (MAIT), Rohini, Delhi. My experience spans search engine optimization (SEO), Generative Engine Optimization (GEO), Amazon and Shopify operations, Meta Ads, content strategy, social media marketing, and market research. I work on keyword research, search intent analysis, on-page optimization, product listing management, campaign analytics, competitor research, and content planning. My approach combines practical execution with structured analysis to help businesses identify opportunities and improve their digital presence. My selected experience includes a freelance Meta Ads campaign reported to have achieved 2× ROI and sales and marketing operations work involving the identification of 1,000+ prospective leads.";
+    "I'm Anubhav Agarwal, a Digital Marketing professional and MBA candidate. My experience spans Search Engine Optimisation (SEO), Generative Engine Optimisation (GEO), Amazon and Shopify Operations, Meta Ads, Content Strategy, Social Media Marketing, and market research. I specialise in keyword research, search intent analysis, on-page optimisation, product listing management, campaign analytics, competitor research, and content planning. My approach combines practical execution with data-driven analysis to help businesses identify opportunities and strengthen their digital presence.";
 
   return (
     <section

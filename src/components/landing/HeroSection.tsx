@@ -66,12 +66,20 @@ export function HeroSection() {
       <div className="w-full px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 flex justify-between items-end relative z-20">
         {/* Left: Paragraph text */}
         <FadeIn delay={0.35} y={20}>
-          <p
-            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[170px] sm:max-w-[240px] md:max-w-[300px]"
-            style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
-          >
-            Digital Marketer specializing in SEO, GEO, E-commerce &amp; Performance Marketing
-          </p>
+          <div className="flex flex-col gap-1.5 max-w-[260px] sm:max-w-[360px] md:max-w-[440px] lg:max-w-[520px]">
+            <p
+              className="text-[#D7E2EA] font-medium uppercase tracking-wider leading-tight"
+              style={{ fontSize: 'clamp(0.85rem, 1.3vw, 1.35rem)' }}
+            >
+              DIGITAL MARKETER &amp; MBA CANDIDATE
+            </p>
+            <p
+              className="text-[#D7E2EA]/75 font-light uppercase tracking-wide leading-relaxed"
+              style={{ fontSize: 'clamp(0.65rem, 0.9vw, 0.9rem)' }}
+            >
+              SEO • GEO • PERFORMANCE MARKETING • E-COMMERCE • WEB DESIGN &amp; DEVELOPMENT • CONTENT • SOCIAL MEDIA • PAID ADS • ANALYTICS
+            </p>
+          </div>
         </FadeIn>
 
         {/* Right: Contact button */}

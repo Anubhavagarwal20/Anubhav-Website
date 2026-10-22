@@ -111,13 +111,13 @@ const educationList = [
     degree: 'Bachelor of Business Administration — Digital Marketing',
     institution: 'Chandigarh University, Ajitgarh, Punjab',
     period: 'Completed 2024',
-    status: 'Score: 74.7%',
+    status: 'Completed',
   },
   {
     degree: 'Class 12 — Commerce, CBSE',
     institution: 'Ajmani International School, Lakhimpur Kheri, Uttar Pradesh',
     period: 'Completed 2022',
-    status: 'Score: 76.2%',
+    status: 'Completed',
   },
 ];
 

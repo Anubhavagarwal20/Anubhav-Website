@@ -59,3 +59,18 @@ body {
   background: #D7E2EA;
   color: #0C0C0C;
 }
+
+/* ─── Custom Cursor (Desktop Fine Pointer Only) ──────────────────────────── */
+@media (pointer: fine) {
+  body,
+  a,
+  button,
+  [role="button"] {
+    cursor: none;
+  }
+  input,
+  textarea,
+  select {
+    cursor: text;
+  }
+}

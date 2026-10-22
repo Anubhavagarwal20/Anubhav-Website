@@ -9,33 +9,33 @@ interface ServiceItem {
 const servicesList: ServiceItem[] = [
   {
     number: '01',
-    name: '3D Modeling',
+    name: 'SEO & Generative Engine Optimization (GEO)',
     description:
-      'Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.',
+      'On-page search optimization, keyword research, search intent analysis, and AI search visibility designed to improve organic discoverability across Google and emerging generative search engines.',
   },
   {
     number: '02',
-    name: 'Rendering',
+    name: 'E-commerce & Marketplace Operations',
     description:
-      'High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.',
+      'End-to-end Amazon Seller Central and Shopify catalog administration, product variation modeling, keyword ranking strategy, and conversion-optimized listing copy.',
   },
   {
     number: '03',
-    name: 'Motion Design',
+    name: 'Performance Marketing & Paid Social',
     description:
-      'Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.',
+      'Data-backed Meta Ads and Google Ads campaign architecture, lead generation funnels, creative A/B testing, and audience targeting that achieved 2X ROI on active campaigns.',
   },
   {
     number: '04',
-    name: 'Branding',
+    name: 'Analytics, GA4 & Market Research',
     description:
-      'Crafting cohesive visual identities -- from logos to full brand systems -- that communicate a clear and memorable presence.',
+      'Google Analytics 4 tracking, pipeline analysis, competitor benchmarking, and market research that mapped 1,000+ prospective leads to power targeted marketing campaigns.',
   },
   {
     number: '05',
-    name: 'Web Design',
+    name: 'Content Strategy & Social Media',
     description:
-      'Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.',
+      'Multi-channel social media management across LinkedIn, Instagram, X, and Reddit, paired with editorial calendars, SEO blog planning, and AI-assisted creative workflows.',
   },
 ];
 
@@ -89,8 +89,8 @@ export function ServicesSection() {
                     {service.name}
                   </h3>
                   <p
-                    className="font-light leading-relaxed max-w-2xl text-[#0C0C0C] opacity-60"
-                    style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)' }}
+                    className="font-light leading-relaxed max-w-2xl text-[#0C0C0C] opacity-70"
+                    style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.15rem)' }}
                   >
                     {service.description}
                   </p>

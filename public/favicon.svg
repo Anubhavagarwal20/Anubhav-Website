@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#4F8CFF"/>
-  <text x="16" y="22" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" fill="#080B12">A</text>
+  <rect width="32" height="32" rx="8" fill="#0C0C0C" stroke="#D7E2EA" stroke-opacity="0.3" stroke-width="1.5"/>
+  <text x="16" y="21" text-anchor="middle" font-family="'Kanit', sans-serif" font-weight="800" font-size="14" fill="#D7E2EA" letter-spacing="-0.5">AA</text>
 </svg>

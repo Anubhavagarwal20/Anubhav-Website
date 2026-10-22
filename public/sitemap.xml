@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ⚠️ SETUP REQUIRED:
-  Replace every instance of https://YOUR-DOMAIN-HERE.com with your real domain.
-  Update <lastmod> dates after each content update.
-  Add/remove <url> entries to match your actual pages.
+  PRODUCTION SITEMAP:
+  Replace https://YOUR-PRODUCTION-DOMAIN.com with your verified production domain upon deployment.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://YOUR-DOMAIN-HERE.com/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <loc>https://YOUR-PRODUCTION-DOMAIN.com/</loc>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>

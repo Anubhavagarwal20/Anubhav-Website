@@ -67,7 +67,7 @@ export function MarqueeSection() {
     <section
       ref={sectionRef}
       className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden w-full select-none"
-      aria-label="Work previews"
+      aria-label="Digital design and creative motion showcase"
     >
       <div className="flex flex-col gap-3 w-full">
         {/* ─── Row 1: Moves RIGHT on scroll ─── */}
@@ -85,8 +85,10 @@ export function MarqueeSection() {
             >
               <img
                 src={src}
-                alt="3D Project Preview"
+                alt="Creative digital marketing and web interface preview"
                 loading="lazy"
+                width={420}
+                height={270}
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>
@@ -108,8 +110,10 @@ export function MarqueeSection() {
             >
               <img
                 src={src}
-                alt="3D Project Preview"
+                alt="Interactive digital campaign visual preview"
                 loading="lazy"
+                width={420}
+                height={270}
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>

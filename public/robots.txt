@@ -1,8 +1,7 @@
-# robots.txt for Anubhav Agarwal's portfolio
-# ⚠️ SETUP REQUIRED: Replace YOUR-DOMAIN-HERE with your real domain before deploying.
+# robots.txt for Anubhav Agarwal Portfolio
+# Instructions: Once your production domain is active, uncomment the Sitemap directive and update the URL.
 
 User-agent: *
 Allow: /
 
-# Sitemap — add after your domain is finalised and sitemap.xml is generated
-# Sitemap: https://YOUR-DOMAIN-HERE.com/sitemap.xml
+# Sitemap: https://YOUR-PRODUCTION-DOMAIN.com/sitemap.xml

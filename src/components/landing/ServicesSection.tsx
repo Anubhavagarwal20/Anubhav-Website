@@ -11,31 +11,31 @@ const servicesList: ServiceItem[] = [
     number: '01',
     name: 'SEO & Generative Engine Optimization (GEO)',
     description:
-      'On-page search optimization, keyword research, search intent analysis, and AI search visibility designed to improve organic discoverability across Google and emerging generative search engines.',
+      'Keyword research, search intent analysis, on-page SEO, content optimization, and technical SEO fundamentals to help websites improve organic discoverability. I also work on making content clear and useful for AI-powered search experiences.',
   },
   {
     number: '02',
-    name: 'E-commerce & Marketplace Operations',
+    name: 'E-commerce & Marketplace Optimization',
     description:
-      'End-to-end Amazon Seller Central and Shopify catalog administration, product variation modeling, keyword ranking strategy, and conversion-optimized listing copy.',
+      'Amazon Seller Central and Shopify catalog operations, product listing optimization, keyword research, product titles, bullet points, backend search terms, product variations, and catalog management.',
   },
   {
     number: '03',
     name: 'Performance Marketing & Paid Social',
     description:
-      'Data-backed Meta Ads and Google Ads campaign architecture, lead generation funnels, creative A/B testing, and audience targeting that achieved 2X ROI on active campaigns.',
+      'Campaign planning, audience targeting, creative testing, lead generation, and campaign analysis across Meta Ads and relevant paid advertising channels. My approach focuses on measurable objectives and evidence-led optimization.',
   },
   {
     number: '04',
-    name: 'Analytics, GA4 & Market Research',
+    name: 'Analytics & Market Research',
     description:
-      'Google Analytics 4 tracking, pipeline analysis, competitor benchmarking, and market research that mapped 1,000+ prospective leads to power targeted marketing campaigns.',
+      'GA4 analysis, competitor benchmarking, market research, lead pipeline analysis, and campaign performance reporting to help identify opportunities and make better marketing decisions.',
   },
   {
     number: '05',
     name: 'Content Strategy & Social Media',
     description:
-      'Multi-channel social media management across LinkedIn, Instagram, X, and Reddit, paired with editorial calendars, SEO blog planning, and AI-assisted creative workflows.',
+      'Editorial planning, SEO-informed blog content, social media calendars, LinkedIn content, platform-specific creative assets, and multi-channel content management.',
   },
 ];
 
@@ -89,7 +89,7 @@ export function ServicesSection() {
                     {service.name}
                   </h3>
                   <p
-                    className="font-light leading-relaxed max-w-2xl text-[#0C0C0C] opacity-70"
+                    className="font-light leading-relaxed max-w-2xl text-[#0C0C0C] opacity-75"
                     style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.15rem)' }}
                   >
                     {service.description}

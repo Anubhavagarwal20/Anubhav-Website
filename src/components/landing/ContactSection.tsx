@@ -36,6 +36,10 @@ export function ContactSection() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setSentStatus('Please fill in all fields before sending.');
+      return;
+    }
     const mailto = `mailto:${email}?subject=Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
@@ -55,14 +59,19 @@ export function ContactSection() {
         <FadeIn delay={0} y={40}>
           <h2
             id="contact-heading"
-            className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-6 sm:mb-8"
-            style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+            className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-4 sm:mb-6"
+            style={{ fontSize: 'clamp(2.5rem, 8vw, 110px)' }}
           >
-            Contact
+            Let&apos;s Discuss Your Next Project
           </h2>
-          <p className="text-center font-light uppercase tracking-widest text-[#D7E2EA]/60 text-sm sm:text-base md:text-lg mb-16 sm:mb-20 md:mb-24 max-w-xl mx-auto">
-            Let's collaborate on SEO, GEO, E-Commerce, or Performance Growth
-          </p>
+          <div className="text-center font-light text-[#D7E2EA]/75 text-sm sm:text-base md:text-lg mb-16 sm:mb-20 md:mb-24 max-w-2xl mx-auto space-y-2">
+            <p>
+              I&apos;m open to full-time digital marketing opportunities, freelance projects, e-commerce consulting, and performance marketing collaborations.
+            </p>
+            <p className="text-xs sm:text-sm text-[#D7E2EA]/60">
+              Whether you need help with SEO, AI search visibility, marketplace operations, or content strategy, let&apos;s discuss your goals.
+            </p>
+          </div>
         </FadeIn>
 
         {/* Two-Column Grid: Left Contact Info / Right Form */}
@@ -73,25 +82,26 @@ export function ContactSection() {
               <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col gap-8">
                 <div>
                   <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block mb-2">
-                    Get In Touch
+                    Direct Contact
                   </span>
                   <h3 className="font-medium uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA]">
-                    Start A Conversation
+                    Anubhav Agarwal
                   </h3>
-                  <p className="font-light text-sm sm:text-base text-[#D7E2EA]/75 mt-3 leading-relaxed">
-                    Available for full-time digital marketing roles, freelance projects, e-commerce consulting, and performance marketing collaborations.
+                  <p className="font-light text-sm sm:text-base text-[#D7E2EA]/75 mt-2 leading-relaxed">
+                    Digital Marketing Specialist &amp; MBA Candidate based in Delhi NCR, India.
                   </p>
                 </div>
 
                 {/* Email Box */}
                 <div className="flex flex-col gap-2">
                   <span className="text-xs font-light uppercase tracking-wider text-[#D7E2EA]/50">
-                    Direct Email
+                    Email Address
                   </span>
                   <div className="flex items-center justify-between gap-2 p-3 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15">
                     <a
                       href={`mailto:${email}`}
                       className="text-xs sm:text-sm font-light text-[#D7E2EA] hover:underline truncate"
+                      aria-label="Send email to Anubhav Agarwal"
                     >
                       {email}
                     </a>
@@ -100,6 +110,7 @@ export function ContactSection() {
                       onClick={handleCopyEmail}
                       className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#D7E2EA]/10 hover:bg-[#D7E2EA]/20 text-xs font-medium uppercase tracking-wider text-[#D7E2EA] transition-colors flex-shrink-0 cursor-pointer"
                       title="Copy email to clipboard"
+                      aria-label="Copy email address"
                     >
                       {copied ? (
                         <>
@@ -116,7 +127,7 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                {/* Social & Professional Links */}
+                {/* Primary & Secondary CTAs / Links */}
                 <div className="flex flex-col gap-3">
                   <span className="text-xs font-light uppercase tracking-wider text-[#D7E2EA]/50">
                     Professional Networks
@@ -126,12 +137,13 @@ export function ContactSection() {
                       href={linkedinUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 hover:border-[#D7E2EA]/40 transition-colors"
+                      className="flex-1 flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 hover:border-[#D7E2EA]/50 transition-colors"
+                      aria-label="View LinkedIn Profile of Anubhav Agarwal (opens in new tab)"
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2.5">
                         <LinkedinIcon className="w-4 h-4 text-[#D7E2EA]" />
-                        <span className="text-sm font-medium uppercase tracking-wider text-[#D7E2EA]">
-                          LinkedIn
+                        <span className="text-xs sm:text-sm font-medium uppercase tracking-wider text-[#D7E2EA]">
+                          View LinkedIn Profile
                         </span>
                       </div>
                       <ArrowUpRight className="w-4 h-4 text-[#D7E2EA]/60" />
@@ -139,12 +151,13 @@ export function ContactSection() {
 
                     <a
                       href={`mailto:${email}`}
-                      className="flex-1 flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 hover:border-[#D7E2EA]/40 transition-colors"
+                      className="flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 hover:border-[#D7E2EA]/50 transition-colors"
+                      aria-label="Email Anubhav Agarwal directly"
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2.5">
                         <Mail className="w-4 h-4 text-[#D7E2EA]" />
-                        <span className="text-sm font-medium uppercase tracking-wider text-[#D7E2EA]">
-                          Mail
+                        <span className="text-xs sm:text-sm font-medium uppercase tracking-wider text-[#D7E2EA]">
+                          Email
                         </span>
                       </div>
                       <ArrowUpRight className="w-4 h-4 text-[#D7E2EA]/60" />
@@ -154,7 +167,7 @@ export function ContactSection() {
 
                 {/* Location / Status badge */}
                 <div className="pt-4 border-t border-[#D7E2EA]/10 flex items-center justify-between text-xs font-light text-[#D7E2EA]/60">
-                  <span>Delhi NCR, India</span>
+                  <span>Location: Delhi NCR, India</span>
                   <span className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                     Open to opportunities
@@ -164,28 +177,30 @@ export function ContactSection() {
             </FadeIn>
           </div>
 
-          {/* Right Column: Interactive Contact Form */}
+          {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
             <FadeIn delay={0.2} y={30}>
               <form
                 onSubmit={handleSubmit}
                 className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col gap-6"
+                aria-label="Contact inquiry form"
               >
                 <div>
                   <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block mb-2">
                     Send A Message
                   </span>
                   <h3 className="font-medium uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA]">
-                    Let's Build Something Great
+                    Let&apos;s Connect
                   </h3>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-name" className="text-xs uppercase font-light tracking-wider text-[#D7E2EA]/70">
-                    Your Name
+                  <label htmlFor="contact-name" className="text-xs uppercase font-light tracking-wider text-[#D7E2EA]/80">
+                    Your Name <span className="text-red-400">*</span>
                   </label>
                   <input
                     id="contact-name"
+                    name="name"
                     type="text"
                     required
                     value={formData.name}
@@ -196,11 +211,12 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-email" className="text-xs uppercase font-light tracking-wider text-[#D7E2EA]/70">
-                    Your Email
+                  <label htmlFor="contact-email" className="text-xs uppercase font-light tracking-wider text-[#D7E2EA]/80">
+                    Your Email <span className="text-red-400">*</span>
                   </label>
                   <input
                     id="contact-email"
+                    name="email"
                     type="email"
                     required
                     value={formData.email}
@@ -211,16 +227,17 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-message" className="text-xs uppercase font-light tracking-wider text-[#D7E2EA]/70">
-                    Project Details / Inquiry
+                  <label htmlFor="contact-message" className="text-xs uppercase font-light tracking-wider text-[#D7E2EA]/80">
+                    Project Details / Inquiry <span className="text-red-400">*</span>
                   </label>
                   <textarea
                     id="contact-message"
+                    name="message"
                     required
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell me about your goals, timelines, or role scope..."
+                    placeholder="Describe your goals, project scope, or opportunity..."
                     className="w-full px-4 py-3.5 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[#D7E2EA] placeholder-[#D7E2EA]/30 text-sm focus:outline-none focus:border-[#D7E2EA]/60 transition-colors resize-none"
                   />
                 </div>
@@ -230,11 +247,14 @@ export function ContactSection() {
                   className="w-full inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] bg-[#D7E2EA] text-[#0C0C0C] font-semibold uppercase tracking-widest px-8 py-4 text-sm sm:text-base hover:bg-transparent hover:text-[#D7E2EA] transition-all duration-200 cursor-pointer select-none active:scale-[0.99] mt-2"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Send Inquiry</span>
+                  <span>Contact Me</span>
                 </button>
 
                 {sentStatus && (
-                  <p className="text-center text-xs font-light text-emerald-400 tracking-wider uppercase mt-1">
+                  <p
+                    role="status"
+                    className="text-center text-xs font-light text-emerald-400 tracking-wider uppercase mt-1"
+                  >
                     {sentStatus}
                   </p>
                 )}
@@ -258,6 +278,9 @@ export function ContactSection() {
             </a>
             <a href="#experience" className="hover:text-[#D7E2EA] transition-colors">
               Experience
+            </a>
+            <a href="#contact" className="hover:text-[#D7E2EA] transition-colors">
+              Contact
             </a>
           </div>
         </div>

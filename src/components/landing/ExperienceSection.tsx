@@ -6,7 +6,8 @@ interface ExperienceItem {
   company: string;
   period: string;
   type: string;
-  description: string;
+  transitionNote?: string;
+  dateNote?: string;
   highlights: string[];
   skills: string[];
 }
@@ -14,48 +15,46 @@ interface ExperienceItem {
 const experienceList: ExperienceItem[] = [
   {
     number: '01',
-    role: 'Content & Social Media Marketing Intern',
+    role: 'Content & Social Media Marketing Intern / Part-time',
     company: 'GEO SEO Lab',
     period: 'April 2026 – Present',
     type: 'Internship / Part-time',
-    description:
-      'Manage multi-channel brand presence across LinkedIn, Instagram, Facebook, Twitter/X, and Reddit using Meta Business Suite for scheduling and performance analytics.',
     highlights: [
-      'Execute SEO and Generative Engine Optimization (GEO) strategies, including blog writing and content optimization, to improve AI and organic search visibility.',
-      'Conduct market and competitor visibility benchmarking to identify high-potential content opportunities.',
-      'Design high-engagement LinkedIn visual assets and educational copy to communicate advanced search concepts.',
+      'Manage multi-channel content and social media activities across LinkedIn, Instagram, Facebook, X, and Reddit.',
+      'Support SEO and GEO strategies through blog writing, keyword research, and content optimization.',
+      'Research competitors and identify relevant content opportunities.',
+      'Create LinkedIn visuals and educational content about SEO and AI-powered search.',
     ],
-    skills: ['GEO', 'SEO', 'Meta Business Suite', 'Content Strategy', 'Competitor Analysis', 'AI Visibility'],
+    skills: ['SEO', 'GEO', 'Content Strategy', 'Meta Business Suite', 'Competitor Research'],
   },
   {
     number: '02',
-    role: 'Freelance E-commerce Specialist (prev. Intern)',
+    role: 'E-commerce Specialist (Previously Amazon Listing Intern)',
     company: 'Chloia',
-    period: 'May 2026 – Present',
-    type: 'Freelance',
-    description:
-      'Direct end-to-end marketplace operations across Amazon and Shopify, administering Amazon Seller Central cataloging, variations, models, images, and customization.',
+    period: 'April 2026 – Present',
+    type: 'Internship → Freelance',
+    transitionNote:
+      'Started as an Amazon E-commerce Listing Intern (26 April 2026 – 28 May 2026), continuing with ongoing freelance e-commerce operations across Amazon and Shopify.',
     highlights: [
-      'Conduct keyword research and on-page listing optimization to lift organic ranking on Amazon and Shopify.',
-      'Structure high-converting product titles, bullet points, backend search terms, and image assets.',
-      'Manage catalog hygiene, parent-child variations, and product launch readiness.',
+      'Manage Amazon and Shopify product listings, catalog information, models, images, and customization options.',
+      'Conduct keyword research and optimize listing titles, bullet points, backend search terms, and product content.',
+      'Support catalog consistency, parent-child variations, and listing readiness.',
     ],
     skills: ['Amazon Seller Central', 'Shopify', 'Keyword Research', 'Catalog Management', 'E-commerce SEO'],
   },
   {
     number: '03',
-    role: 'Digital Strategy & Performance Associate Intern',
-    company: 'Moiret',
+    role: 'Digital Strategy & Performance Marketing Intern',
+    company: 'Moirét Consulting',
     period: 'September – December 2025',
     type: 'Internship',
-    description:
-      'Executed on-page SEO frameworks and performance marketing alignment for B2B brand growth and consulting outreach.',
     highlights: [
-      'Conducted search intent analysis, competitor ranking audits, and content optimization to boost organic visibility.',
-      'Built SEO-driven blog planners and editorial content calendars aligned with corporate brand positioning.',
-      'Designed LinkedIn marketing creatives supporting digital engagement and lead acquisition.',
+      'Supported on-page SEO and content optimization for B2B brand growth and consulting outreach.',
+      'Conducted search intent analysis and competitor research.',
+      'Developed SEO-driven blog plans and editorial calendars.',
+      'Created LinkedIn marketing assets supporting digital engagement and outreach.',
     ],
-    skills: ['On-Page SEO', 'Search Intent Analysis', 'Blog Planning', 'Content Calendars', 'B2B Strategy'],
+    skills: ['On-Page SEO', 'Search Intent', 'Blog Planning', 'B2B Strategy'],
   },
   {
     number: '04',
@@ -63,14 +62,13 @@ const experienceList: ExperienceItem[] = [
     company: 'Ray Talent Hunt',
     period: 'July 2025 – August 2026',
     type: 'Freelance',
-    description:
-      'Developed and managed the corporate website while orchestrating multi-channel social media marketing campaigns.',
+    dateNote: 'Dates supplied per initial project agreement',
     highlights: [
-      'Built and maintained responsive website architectures ensuring consistent brand presentation.',
-      'Managed day-to-day digital marketing execution, social content distribution, and promotional initiatives.',
-      'Assisted in brand promotion strategy to elevate cross-channel discoverability.',
+      'Developed and maintained the company website.',
+      'Supported website management, social media content, and digital marketing activities.',
+      'Assisted with promotional campaigns and brand visibility across channels.',
     ],
-    skills: ['Website Development', 'Website Management', 'Social Media', 'Digital Strategy', 'Brand Promotion'],
+    skills: ['Website Development', 'Website Management', 'Social Media', 'Digital Strategy'],
   },
   {
     number: '05',
@@ -78,14 +76,13 @@ const experienceList: ExperienceItem[] = [
     company: 'Sri Ganpati Collection',
     period: 'July 2023 – June 2024',
     type: 'Freelance',
-    description:
-      'Led end-to-end digital marketing initiatives across website management, Meta Ads, social media, and influencer collaborations.',
     highlights: [
-      'Achieved verified 2X ROI on paid Meta Ads performance campaigns through rigorous targeting and ad spend optimization.',
-      'Built and managed company website with on-page SEO integration and fast catalog browsing.',
-      'Produced 20+ branded product creatives leveraging AI-assisted design tools to increase click-through rates.',
+      'Managed website and social media activities.',
+      'Supported Meta Ads campaign targeting and budget optimization, achieving a reported 2× ROI on campaigns.',
+      'Produced 20+ product creatives using AI-assisted design tools.',
+      'Integrated on-page SEO practices into website management.',
     ],
-    skills: ['Meta Ads (2X ROI)', 'Lead Generation', 'AI Product Creatives', 'Web SEO', 'Influencer Marketing'],
+    skills: ['Meta Ads', 'Website SEO', 'AI-Assisted Creatives', 'Lead Generation'],
   },
   {
     number: '06',
@@ -93,14 +90,13 @@ const experienceList: ExperienceItem[] = [
     company: 'My Equation (formerly Tech Analogy)',
     period: 'June – August 2023',
     type: 'Internship',
-    description:
-      'Drove market research, prospective lead identification, and outbound client communication to build the core sales pipeline.',
     highlights: [
-      'Identified 1,000+ prospective leads contributing to approximately 50% of the active sales pipeline.',
-      'Executed targeted email marketing campaigns and supported 600+ direct client interactions.',
-      'Tracked and analyzed campaign metrics in CRM to refine conversion-focused sales pitches.',
+      'Identified 1,000+ prospective leads for targeted outreach.',
+      'Supported pipeline development and direct client communication.',
+      'Assisted with email marketing and outbound campaigns.',
+      'Reviewed CRM and campaign information to support sales outreach improvements.',
     ],
-    skills: ['1,000+ Leads', '50% Pipeline Contributed', 'Email Marketing', '600+ Client Interactions', 'CRM'],
+    skills: ['Lead Research', 'Email Marketing', 'CRM', 'Market Research'],
   },
 ];
 
@@ -109,37 +105,40 @@ const educationList = [
     degree: 'Master of Business Administration (MBA)',
     institution: 'Maharaja Agrasen Institute of Technology (MAIT), Rohini, Delhi',
     period: 'Expected 2027',
-    badge: 'In Progress',
+    status: 'In progress',
   },
   {
-    degree: 'Bachelor of Business Administration (BBA) — Digital Marketing',
+    degree: 'Bachelor of Business Administration — Digital Marketing',
     institution: 'Chandigarh University, Ajitgarh, Punjab',
     period: 'Completed 2024',
-    badge: 'Score: 74.7%',
+    status: 'Score: 74.7%',
   },
   {
-    degree: 'Class 12 (Commerce) — CBSE',
-    institution: 'Ajmani International School, Lakhimpur Kheri, U.P.',
+    degree: 'Class 12 — Commerce, CBSE',
+    institution: 'Ajmani International School, Lakhimpur Kheri, Uttar Pradesh',
     period: 'Completed 2022',
-    badge: 'Score: 76.2%',
+    status: 'Score: 76.2%',
   },
 ];
 
 const leadershipList = [
   {
-    title: "Event Organiser & Host | DigiQuest '26",
+    title: "Event Organiser & Host — DigiQuest '26",
     organization: 'E-Summit, Maharaja Agrasen Institute of Technology',
-    detail: 'Led registrations, operations, and hosted a 3-round digital marketing competition featuring case studies and tool challenges.',
+    detail:
+      'Led registrations and event operations and hosted a three-round digital marketing competition featuring case studies and marketing-tool challenges.',
   },
   {
-    title: 'Organizing Committee Member',
-    organization: 'Alumni Cell, Maharaja Agrasen Institute of Technology',
-    detail: 'Coordinated alumni outreach, onsite registrations, stage logistics, and RSVP follow-ups.',
+    title: 'Organizing Committee Member — Alumni Cell',
+    organization: 'Maharaja Agrasen Institute of Technology',
+    detail:
+      'Supported alumni outreach, event registrations, stage logistics, and RSVP coordination.',
   },
   {
     title: 'Graphic Designer & Event Coordinator',
-    organization: 'Chandigarh University (Apex Dept & Event Management)',
-    detail: 'Designed promotional graphics, banners, and coordinated student team workflows for university events.',
+    organization: 'Chandigarh University — Apex Department and Event Management',
+    detail:
+      'Designed promotional graphics and event banners and coordinated student-team workflows.',
   },
 ];
 
@@ -155,13 +154,13 @@ export function ExperienceSection() {
         <FadeIn delay={0} y={40}>
           <h2
             id="experience-heading"
-            className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-6 sm:mb-8"
+            className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-4 sm:mb-6"
             style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
           >
             Experience
           </h2>
-          <p className="text-center font-light uppercase tracking-widest text-[#D7E2EA]/60 text-sm sm:text-base md:text-lg mb-16 sm:mb-20 md:mb-24 max-w-2xl mx-auto">
-            Track record across SEO, GEO, E-Commerce, and Performance Marketing
+          <p className="text-center font-light uppercase tracking-widest text-[#D7E2EA]/60 text-xs sm:text-sm md:text-base mb-16 sm:mb-20 md:mb-24 max-w-2xl mx-auto">
+            Professional record in SEO, GEO, E-Commerce, and Performance Marketing
           </p>
         </FadeIn>
 
@@ -184,7 +183,7 @@ export function ExperienceSection() {
                         {item.role}
                       </h3>
                       <div className="flex flex-wrap items-center gap-2 mt-1">
-                        <span className="text-base sm:text-lg font-light text-[#D7E2EA]/80">
+                        <span className="text-base sm:text-lg font-light text-[#D7E2EA]/90">
                           {item.company}
                         </span>
                         <span className="text-[#D7E2EA]/40">•</span>
@@ -195,22 +194,35 @@ export function ExperienceSection() {
                     </div>
                   </div>
 
-                  <span className="text-xs sm:text-sm font-light uppercase tracking-wider text-[#D7E2EA]/60 md:text-right whitespace-nowrap">
-                    {item.period}
-                  </span>
+                  <div className="flex flex-col md:items-end gap-1">
+                    <span className="text-xs sm:text-sm font-light uppercase tracking-wider text-[#D7E2EA]/60 whitespace-nowrap">
+                      {item.period}
+                    </span>
+                    {item.dateNote && (
+                      <span className="text-[11px] font-light text-[#D7E2EA]/40 italic">
+                        {item.dateNote}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                {/* Description & Highlights */}
-                <div className="pt-6 flex flex-col gap-4">
-                  <p className="font-light text-sm sm:text-base leading-relaxed text-[#D7E2EA]/85">
-                    {item.description}
-                  </p>
+                {/* Transition Note (if any) */}
+                {item.transitionNote && (
+                  <div className="mt-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs font-light text-[#D7E2EA]/80 leading-relaxed">
+                    <span className="font-medium text-[#D7E2EA] uppercase tracking-wider text-[11px] mr-1.5">
+                      Role Transition:
+                    </span>
+                    {item.transitionNote}
+                  </div>
+                )}
 
+                {/* Highlights List */}
+                <div className="pt-5 flex flex-col gap-4">
                   <ul className="space-y-2">
                     {item.highlights.map((highlight, hIdx) => (
                       <li
                         key={hIdx}
-                        className="flex items-start gap-2.5 text-xs sm:text-sm font-light text-[#D7E2EA]/75 leading-relaxed"
+                        className="flex items-start gap-2.5 text-xs sm:text-sm font-light text-[#D7E2EA]/85 leading-relaxed"
                       >
                         <span className="text-[#D7E2EA] mt-1 text-xs">▸</span>
                         <span>{highlight}</span>
@@ -219,7 +231,7 @@ export function ExperienceSection() {
                   </ul>
 
                   {/* Skills tags */}
-                  <div className="flex flex-wrap gap-2 pt-3">
+                  <div className="flex flex-wrap gap-2 pt-2">
                     {item.skills.map((skill) => (
                       <span
                         key={skill}
@@ -242,7 +254,7 @@ export function ExperienceSection() {
             <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block mb-2">
-                  Academic Background
+                  Academic Credentials
                 </span>
                 <h3 className="font-black uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA] mb-6">
                   Education
@@ -258,11 +270,11 @@ export function ExperienceSection() {
                         <h4 className="font-medium text-base sm:text-lg text-[#D7E2EA]">
                           {edu.degree}
                         </h4>
-                        <span className="text-xs uppercase px-2.5 py-1 rounded-full border border-[#D7E2EA]/20 text-[#D7E2EA]/80 whitespace-nowrap">
-                          {edu.badge}
+                        <span className="text-xs uppercase px-2.5 py-1 rounded-full border border-[#D7E2EA]/20 text-[#D7E2EA]/80 whitespace-nowrap flex-shrink-0">
+                          {edu.status}
                         </span>
                       </div>
-                      <p className="font-light text-sm text-[#D7E2EA]/70 mt-1">
+                      <p className="font-light text-sm text-[#D7E2EA]/75 mt-1">
                         {edu.institution}
                       </p>
                       <span className="text-xs font-light text-[#D7E2EA]/50 block mt-1">
@@ -280,10 +292,10 @@ export function ExperienceSection() {
             <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block mb-2">
-                  Campus & Community
+                  Campus &amp; Community
                 </span>
                 <h3 className="font-black uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA] mb-6">
-                  Leadership
+                  Leadership &amp; Activities
                 </h3>
 
                 <div className="space-y-6">
@@ -298,7 +310,7 @@ export function ExperienceSection() {
                       <p className="text-xs uppercase tracking-wider text-[#D7E2EA]/60 mt-0.5">
                         {lead.organization}
                       </p>
-                      <p className="font-light text-xs sm:text-sm text-[#D7E2EA]/75 mt-2 leading-relaxed">
+                      <p className="font-light text-xs sm:text-sm text-[#D7E2EA]/80 mt-2 leading-relaxed">
                         {lead.detail}
                       </p>
                     </div>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import type { FormEvent } from 'react';
-import { Mail, Copy, Check, ArrowUpRight, Send, Loader2, AlertCircle } from 'lucide-react';
+import { Mail, Copy, Check, ArrowUpRight, Calendar, Clock, Video } from 'lucide-react';
 import { FadeIn } from '../ui/FadeIn';
 
 function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {
@@ -18,19 +17,10 @@ function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {
 
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submissionSuccess, setSubmissionSuccess] = useState<boolean | null>(null);
-  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   const targetEmail = 'anubhavagarwal2020@gmail.com';
   const linkedinUrl = 'https://www.linkedin.com/in/anubhavagarwal20/';
-
-  // To connect Web3Forms or Formspree directly:
-  // 1. Web3Forms (Free, instant key at web3forms.com): put key here
-  const web3formsAccessKey = '' as string; 
-  // 2. Formspree (Free form at formspree.io): put endpoint id here
-  const formspreeEndpoint = '' as string;
+  const calendlyUrl = 'https://calendly.com/anubhavagarwal/digital-marketing';
 
   const handleCopyEmail = async () => {
     try {
@@ -39,88 +29,6 @@ export function ContactSection() {
       setTimeout(() => setCopied(false), 2500);
     } catch {
       // Fallback
-    }
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setStatusMessage('Please fill in all required fields.');
-      setSubmissionSuccess(false);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setStatusMessage(null);
-    setSubmissionSuccess(null);
-
-    try {
-      let endpoint = `https://formsubmit.co/ajax/${targetEmail}`;
-      let payload: Record<string, string> = {
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        message: formData.message.trim(),
-        _subject: `New Portfolio Message from ${formData.name.trim()}`,
-        _captcha: 'false',
-        _template: 'table',
-      };
-
-      if (web3formsAccessKey) {
-        endpoint = 'https://api.web3forms.com/submit';
-        payload = {
-          access_key: web3formsAccessKey,
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          message: formData.message.trim(),
-          subject: `New Portfolio Message from ${formData.name.trim()}`,
-          from_name: formData.name.trim(),
-        };
-      } else if (formspreeEndpoint) {
-        endpoint = formspreeEndpoint.startsWith('http')
-          ? formspreeEndpoint
-          : `https://formspree.io/f/${formspreeEndpoint}`;
-        payload = {
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          message: formData.message.trim(),
-        };
-      }
-
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const data = await response.json().catch(() => null);
-
-      if (response.ok && (!data || data.success === 'true' || data.success === true || data.ok || data.message)) {
-        setSubmissionSuccess(true);
-        setStatusMessage(
-          `Thank you, ${formData.name.trim()}! Your message has been sent directly to ${targetEmail}.`
-        );
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error((data && data.message) || 'Submission failed');
-      }
-    } catch {
-      // Fallback: direct mailto if network or adblocker interrupts AJAX
-      setSubmissionSuccess(false);
-      setStatusMessage(
-        'Sending via direct email client...'
-      );
-      const mailto = `mailto:${targetEmail}?subject=Portfolio Inquiry from ${encodeURIComponent(
-        formData.name
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
-      window.location.href = mailto;
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -150,12 +58,12 @@ export function ContactSection() {
           </div>
         </FadeIn>
 
-        {/* Two-Column Grid: Left Contact Info / Right Form */}
+        {/* Two-Column Grid: Left Contact Info / Right Schedule Meeting */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 mb-24 sm:mb-32">
           {/* Left Column: Direct Info */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-8">
             <FadeIn delay={0.1} y={30}>
-              <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col gap-8">
+              <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col gap-8 h-full">
                 <div>
                   <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block mb-2">
                     Direct Contact
@@ -253,110 +161,70 @@ export function ContactSection() {
             </FadeIn>
           </div>
 
-          {/* Right Column: Contact Form */}
+          {/* Right Column: Schedule Meeting */}
           <div className="lg:col-span-7">
             <FadeIn delay={0.2} y={30}>
-              <form
-                onSubmit={handleSubmit}
-                className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col gap-6"
-                aria-label="Contact inquiry form"
-              >
-                <div>
-                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block mb-2">
-                    Send A Message
+              <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-8 h-full">
+                <div className="flex flex-col gap-4">
+                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/50 block">
+                    1-on-1 Consultation & Discovery
                   </span>
-                  <h3 className="font-medium uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA]">
-                    Let&apos;s Connect
+                  <h3 className="font-medium uppercase tracking-tight text-2xl sm:text-4xl text-[#D7E2EA]">
+                    Schedule A Meeting
                   </h3>
+                  <p className="font-light text-sm sm:text-base text-[#D7E2EA]/75 leading-relaxed">
+                    Pick a convenient time directly on my calendar to discuss your digital marketing strategy, SEO &amp; GEO audits, performance campaigns, marketplace operations, or potential collaborations.
+                  </p>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-name" className="text-xs uppercase font-light tracking-wider text-[#D7E2EA]/80">
-                    Your Name <span className="text-red-400">*</span>
-                  </label>
-                  <input
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Enter your name"
-                    className="w-full px-4 py-3.5 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[#D7E2EA] placeholder-[#D7E2EA]/30 text-sm focus:outline-none focus:border-[#D7E2EA]/60 transition-colors"
-                    disabled={isSubmitting}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-email" className="text-xs uppercase font-light tracking-wider text-[#D7E2EA]/80">
-                    Your Email <span className="text-red-400">*</span>
-                  </label>
-                  <input
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="name@example.com"
-                    className="w-full px-4 py-3.5 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[#D7E2EA] placeholder-[#D7E2EA]/30 text-sm focus:outline-none focus:border-[#D7E2EA]/60 transition-colors"
-                    disabled={isSubmitting}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-message" className="text-xs uppercase font-light tracking-wider text-[#D7E2EA]/80">
-                    Project Details / Inquiry <span className="text-red-400">*</span>
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Describe your goals, project scope, or opportunity..."
-                    className="w-full px-4 py-3.5 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[#D7E2EA] placeholder-[#D7E2EA]/30 text-sm focus:outline-none focus:border-[#D7E2EA]/60 transition-colors resize-none"
-                    disabled={isSubmitting}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] bg-[#D7E2EA] text-[#0C0C0C] font-semibold uppercase tracking-widest px-8 py-4 text-sm sm:text-base hover:bg-transparent hover:text-[#D7E2EA] transition-all duration-200 cursor-pointer select-none active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed mt-2"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Sending Message...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      <span>Contact Me</span>
-                    </>
-                  )}
-                </button>
-
-                {statusMessage && (
-                  <div
-                    role="status"
-                    className={`p-4 rounded-2xl border flex items-center gap-3 text-xs sm:text-sm mt-1 ${
-                      submissionSuccess
-                        ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-                        : 'bg-amber-500/10 border-amber-500/30 text-amber-300'
-                    }`}
-                  >
-                    {submissionSuccess ? (
-                      <Check className="w-5 h-5 flex-shrink-0 text-emerald-400" />
-                    ) : (
-                      <AlertCircle className="w-5 h-5 flex-shrink-0 text-amber-400" />
-                    )}
-                    <span>{statusMessage}</span>
+                {/* Feature highlights */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/10 flex flex-col gap-2">
+                    <Clock className="w-5 h-5 text-[#D7E2EA]" />
+                    <span className="text-xs font-medium uppercase tracking-wider text-[#D7E2EA]">
+                      30-Min Call
+                    </span>
+                    <span className="text-[11px] text-[#D7E2EA]/60 font-light">
+                      Focused strategy &amp; goal discussion
+                    </span>
                   </div>
-                )}
-              </form>
+
+                  <div className="p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/10 flex flex-col gap-2">
+                    <Video className="w-5 h-5 text-[#D7E2EA]" />
+                    <span className="text-xs font-medium uppercase tracking-wider text-[#D7E2EA]">
+                      Google Meet
+                    </span>
+                    <span className="text-[11px] text-[#D7E2EA]/60 font-light">
+                      Direct 1-on-1 video consultation
+                    </span>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/10 flex flex-col gap-2">
+                    <Calendar className="w-5 h-5 text-[#D7E2EA]" />
+                    <span className="text-xs font-medium uppercase tracking-wider text-[#D7E2EA]">
+                      Instant Booking
+                    </span>
+                    <span className="text-[11px] text-[#D7E2EA]/60 font-light">
+                      Live sync with Calendly availability
+                    </span>
+                  </div>
+                </div>
+
+                {/* Schedule Button */}
+                <div className="pt-2">
+                  <a
+                    href={calendlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-3 rounded-full border-2 border-[#D7E2EA] bg-[#D7E2EA] text-[#0C0C0C] font-semibold uppercase tracking-widest px-8 py-5 text-sm sm:text-base hover:bg-transparent hover:text-[#D7E2EA] transition-all duration-200 cursor-pointer select-none active:scale-[0.99] group shadow-lg shadow-white/5"
+                    aria-label="Schedule a meeting with Anubhav Agarwal on Calendly (opens in new tab)"
+                  >
+                    <Calendar className="w-5 h-5 text-[#0C0C0C] group-hover:text-[#D7E2EA] transition-colors" />
+                    <span>Schedule Meeting</span>
+                    <ArrowUpRight className="w-5 h-5 text-[#0C0C0C] group-hover:text-[#D7E2EA] transition-colors" />
+                  </a>
+                </div>
+              </div>
             </FadeIn>
           </div>
         </div>

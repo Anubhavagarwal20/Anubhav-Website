@@ -2,51 +2,39 @@ import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export function CustomCursor() {
-  const [isPointerFine, setIsPointerFine] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const [cursorText, setCursorText] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(true);
 
-  // Raw mouse coordinates
-  const mouseX = useMotionValue(-100);
-  const mouseY = useMotionValue(-100);
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
 
-  // Smooth springs for outer trailing ring
-  const springConfig = { damping: 24, stiffness: 260, mass: 0.5 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
+  const springConfig = { damping: 28, stiffness: 350, mass: 0.5 };
+  const smoothX = useSpring(cursorX, springConfig);
+  const smoothY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Check if device supports hover / fine pointer (mouse/trackpad, not touch)
-    const mediaQuery = window.matchMedia('(pointer: fine)');
-    setIsPointerFine(mediaQuery.matches);
-
-    const handleMediaChange = (e: MediaQueryListEvent) => {
-      setIsPointerFine(e.matches);
-    };
-
-    mediaQuery.addEventListener('change', handleMediaChange);
-
-    if (!mediaQuery.matches) return;
+    // Detect touch / coarse pointer
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      setIsTouchDevice(true);
+      return;
+    }
+    setIsTouchDevice(false);
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
 
+      // Check targets for hover interactions
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      // Check if hovering interactive element
-      const interactiveEl = target.closest(
-        'a, button, [role="button"], input, textarea, select, label, [data-cursor]'
-      );
-
+      const interactiveEl = target.closest('a, button, [role="button"], input, textarea, select, [data-cursor]');
       if (interactiveEl) {
         setIsHovered(true);
-        const customText = interactiveEl.getAttribute('data-cursor-text');
+        const customText = interactiveEl.getAttribute('data-cursor');
         setCursorText(customText || null);
       } else {
         setIsHovered(false);
@@ -54,80 +42,68 @@ export function CustomCursor() {
       }
     };
 
-    const handleMouseDown = () => setIsClicked(true);
-    const handleMouseUp = () => setIsClicked(false);
-
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseLeave = () => {
+      setIsVisible(false);
+    };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
     document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
-      mediaQuery.removeEventListener('change', handleMediaChange);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [mouseX, mouseY, isVisible]);
+  }, [cursorX, cursorY, isVisible]);
 
-  if (!isPointerFine) return null;
+  if (isTouchDevice || !isVisible) return null;
 
   return (
-    <div
-      className={`fixed inset-0 pointer-events-none z-[99999] transition-opacity duration-300 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}
-      aria-hidden="true"
-    >
-      {/* ─── Outer Trailing Smooth Ring ─── */}
+    <>
+      {/* Central crisp dot */}
       <motion.div
+        className="fixed top-0 left-0 w-2.5 h-2.5 bg-[#D7E2EA] rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"
+        style={{
+          x: cursorX,
+          y: cursorY,
+        }}
+        animate={{
+          scale: isHovered ? (cursorText ? 0 : 0.5) : 1,
+          opacity: isHovered && cursorText ? 0 : 1,
+        }}
+        transition={{ duration: 0.15 }}
+      />
+
+      {/* Outer fluid trailing aura */}
+      <motion.div
+        className="fixed top-0 left-0 pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-mono text-[9px] uppercase tracking-wider font-bold text-[#0C0C0C]"
         style={{
           x: smoothX,
           y: smoothY,
-          translateX: '-50%',
-          translateY: '-50%',
         }}
         animate={{
-          scale: isClicked ? 0.8 : isHovered ? 1.75 : 1,
-          width: isHovered ? 48 : 36,
-          height: isHovered ? 48 : 36,
-          borderWidth: isHovered ? '1.5px' : '1px',
+          width: cursorText ? 68 : isHovered ? 48 : 28,
+          height: cursorText ? 68 : isHovered ? 48 : 28,
+          backgroundColor: cursorText
+            ? 'rgba(215, 226, 234, 0.95)'
+            : isHovered
+            ? 'rgba(215, 226, 234, 0.15)'
+            : 'rgba(215, 226, 234, 0.05)',
+          borderColor: isHovered ? 'rgba(215, 226, 234, 0.8)' : 'rgba(215, 226, 234, 0.3)',
+          borderWidth: cursorText ? '0px' : '1px',
+          backdropFilter: isHovered ? 'blur(4px)' : 'none',
         }}
-        transition={{
-          scale: { type: 'spring', damping: 20, stiffness: 300 },
-          width: { duration: 0.2 },
-          height: { duration: 0.2 },
-        }}
-        className="fixed top-0 left-0 rounded-full border border-white/60 bg-white/[0.04] backdrop-blur-[1px] mix-blend-difference flex items-center justify-center pointer-events-none"
+        transition={{ duration: 0.2, ease: 'easeOut' }}
       >
         {cursorText && (
-          <span className="text-[9px] font-bold tracking-widest uppercase text-white select-none">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="select-none text-center leading-none"
+          >
             {cursorText}
-          </span>
+          </motion.span>
         )}
       </motion.div>
-
-      {/* ─── Inner Precision Dot ─── */}
-      <motion.div
-        style={{
-          x: mouseX,
-          y: mouseY,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-        animate={{
-          scale: isClicked ? 0.6 : isHovered ? 0.4 : 1,
-          opacity: isHovered ? 0.5 : 1,
-        }}
-        transition={{ duration: 0.15 }}
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-white mix-blend-difference pointer-events-none"
-      />
-    </div>
+    </>
   );
 }

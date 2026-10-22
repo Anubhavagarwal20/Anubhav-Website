@@ -1,11 +1,11 @@
 import { FadeIn } from '../ui/FadeIn';
 import { ContactButton } from '../ui/ContactButton';
-import { Magnet } from '../ui/Magnet';
-import heroAvatar from '../../assets/avatar.png';
+import { HeroAvatar3D } from './HeroAvatar3D';
 
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
+  { label: 'Lab', href: '#interactive-lab' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
@@ -46,22 +46,7 @@ export function HeroSection() {
       {/* ─── Hero Portrait ─── */}
       <div className="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-auto">
         <FadeIn delay={0.6} y={30}>
-          <Magnet
-            padding={150}
-            strength={3}
-            activeTransition="transform 0.3s ease-out"
-            inactiveTransition="transform 0.6s ease-in-out"
-          >
-            <img
-              src={heroAvatar}
-              alt="Anubhav Agarwal — 3D Avatar Portrait"
-              width={520}
-              height={520}
-              fetchPriority="high"
-              className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] object-contain select-none pointer-events-none drop-shadow-2xl"
-              draggable={false}
-            />
-          </Magnet>
+          <HeroAvatar3D />
         </FadeIn>
       </div>
 

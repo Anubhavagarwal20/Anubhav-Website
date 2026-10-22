@@ -99,32 +99,32 @@ function Card({ project, index, totalCards }: CardProps) {
   return (
     <div
       ref={containerRef}
-      className="min-h-[85vh] sticky top-20 md:top-28 flex items-center justify-center w-full py-4"
+      className="min-h-auto md:min-h-[85vh] relative md:sticky md:top-24 lg:top-28 flex items-center justify-center w-full py-3 sm:py-4 mb-6 md:mb-0"
     >
       <motion.div
         style={{
           scale,
-          top: `${index * 24}px`,
+          top: `${index * 20}px`,
         }}
-        className="relative w-full rounded-[36px] sm:rounded-[48px] md:rounded-[56px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-5 sm:p-7 md:p-9 flex flex-col justify-between gap-6 overflow-hidden shadow-2xl"
+        className="relative w-full rounded-[28px] sm:rounded-[36px] md:rounded-[48px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 lg:p-9 flex flex-col justify-between gap-5 sm:gap-6 overflow-hidden shadow-2xl"
       >
         {/* ─── Top Row: Meta & Header ─── */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-2 border-b border-[#D7E2EA]/10">
-          <div className="flex items-start sm:items-center gap-4 sm:gap-6">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-3 border-b border-[#D7E2EA]/10">
+          <div className="flex items-start sm:items-center gap-3.5 sm:gap-6">
             {/* Number (large) */}
             <span
               className="font-black text-[#D7E2EA] leading-none select-none flex-shrink-0"
-              style={{ fontSize: 'clamp(2.5rem, 6vw, 84px)' }}
+              style={{ fontSize: 'clamp(2.25rem, 5.5vw, 84px)' }}
             >
               {project.number}
             </span>
 
             {/* Category label and project name */}
             <div className="flex flex-col">
-              <span className="text-xs sm:text-sm font-light uppercase tracking-widest text-[#D7E2EA]/60">
+              <span className="text-[11px] sm:text-xs md:text-sm font-light uppercase tracking-widest text-[#D7E2EA]/60">
                 {project.category}
               </span>
-              <h3 className="font-medium uppercase tracking-tight text-[#D7E2EA] text-xl sm:text-2xl md:text-3xl">
+              <h3 className="font-medium uppercase tracking-tight text-[#D7E2EA] text-lg sm:text-2xl md:text-3xl">
                 {project.name}
               </h3>
             </div>
@@ -133,22 +133,22 @@ function Card({ project, index, totalCards }: CardProps) {
           {/* Project Details Link */}
           <a
             href={project.link}
-            className="inline-flex items-center justify-center rounded-full border border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-wider px-6 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm transition-colors duration-200 hover:bg-[#D7E2EA] hover:text-[#0C0C0C] active:scale-[0.98] select-none whitespace-nowrap self-start lg:self-center"
+            className="w-full sm:w-auto text-center inline-flex items-center justify-center rounded-full border border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-wider px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm transition-colors duration-200 hover:bg-[#D7E2EA] hover:text-[#0C0C0C] active:scale-[0.98] select-none whitespace-nowrap self-start lg:self-center"
           >
             View Experience Details
           </a>
         </div>
 
         {/* ─── Description & Tags ─── */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
           <p className="text-xs sm:text-sm font-light text-[#D7E2EA]/80 leading-relaxed max-w-3xl">
             {project.description}
           </p>
-          <div className="flex flex-wrap gap-2 flex-shrink-0">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 flex-shrink-0">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 rounded-full bg-[#161616] border border-[#D7E2EA]/15 text-[11px] sm:text-xs font-light uppercase tracking-wider text-[#D7E2EA]/75"
+                className="px-2.5 py-1 rounded-full bg-[#161616] border border-[#D7E2EA]/15 text-[10px] sm:text-xs font-light uppercase tracking-wider text-[#D7E2EA]/75"
               >
                 {tag}
               </span>
@@ -156,41 +156,39 @@ function Card({ project, index, totalCards }: CardProps) {
           </div>
         </div>
 
-        {/* ─── Bottom Row: Two-Column Image Grid with Descriptive Alt Texts ─── */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 w-full items-stretch">
-          {/* Left Column (40% width): 2 stacked images */}
-          <div className="md:col-span-5 flex flex-col gap-4 sm:gap-6">
+        {/* ─── Bottom Row: Two-Column Image Grid ─── */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 md:gap-6 w-full items-stretch">
+          {/* Left Column (5 of 12 cols): 2 stacked images */}
+          <div className="md:col-span-5 flex flex-col sm:flex-row md:flex-col gap-3 sm:gap-4 md:gap-6">
             <div
-              className="w-full overflow-hidden rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-[#141414]"
-              style={{ height: 'clamp(120px, 15vw, 210px)' }}
+              className="w-full overflow-hidden rounded-[18px] sm:rounded-[24px] md:rounded-[32px] bg-[#141414] h-[150px] sm:h-[180px] md:h-[170px] lg:h-[200px]"
             >
               <img
                 src={project.col1Img1.src}
                 alt={project.col1Img1.alt}
                 loading="lazy"
-                className="w-full h-full object-cover rounded-[24px] sm:rounded-[32px] md:rounded-[40px]"
+                className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px]"
               />
             </div>
             <div
-              className="w-full overflow-hidden rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-[#141414]"
-              style={{ height: 'clamp(140px, 18vw, 270px)' }}
+              className="w-full overflow-hidden rounded-[18px] sm:rounded-[24px] md:rounded-[32px] bg-[#141414] h-[150px] sm:h-[180px] md:h-[190px] lg:h-[230px]"
             >
               <img
                 src={project.col1Img2.src}
                 alt={project.col1Img2.alt}
                 loading="lazy"
-                className="w-full h-full object-cover rounded-[24px] sm:rounded-[32px] md:rounded-[40px]"
+                className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px]"
               />
             </div>
           </div>
 
-          {/* Right Column (60% width): 1 tall image */}
-          <div className="md:col-span-7 w-full overflow-hidden rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-[#141414] min-h-[200px] sm:min-h-[280px]">
+          {/* Right Column (7 of 12 cols): 1 tall image */}
+          <div className="md:col-span-7 w-full overflow-hidden rounded-[18px] sm:rounded-[24px] md:rounded-[32px] bg-[#141414] h-[200px] sm:h-[260px] md:h-full min-h-[200px] sm:min-h-[260px]">
             <img
               src={project.col2Img.src}
               alt={project.col2Img.alt}
               loading="lazy"
-              className="w-full h-full object-cover rounded-[24px] sm:rounded-[32px] md:rounded-[40px]"
+              className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px]"
             />
           </div>
         </div>
@@ -203,7 +201,7 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-10 px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-32 pb-24 sm:pb-32"
+      className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-10 px-4 sm:px-8 md:px-10 pt-16 sm:pt-24 md:pt-32 pb-20 sm:pb-32"
       aria-labelledby="projects-heading"
     >
       <div className="max-w-6xl mx-auto w-full">
@@ -211,17 +209,17 @@ export function ProjectsSection() {
         <FadeIn delay={0} y={40}>
           <h2
             id="projects-heading"
-            className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-4 sm:mb-6"
-            style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+            className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-3 sm:mb-5"
+            style={{ fontSize: 'clamp(2.75rem, 11vw, 160px)' }}
           >
             Projects
           </h2>
-          <p className="text-center font-light uppercase tracking-widest text-[#D7E2EA]/60 text-xs sm:text-sm md:text-base mb-16 sm:mb-20 md:mb-28 max-w-xl mx-auto">
+          <p className="text-center font-light uppercase tracking-widest text-[#D7E2EA]/60 text-xs sm:text-sm md:text-base mb-12 sm:mb-18 md:mb-24 max-w-xl mx-auto">
             Selected client, freelance, and operational digital marketing engagements
           </p>
         </FadeIn>
 
-        {/* 3 Sticky Stacking Cards */}
+        {/* Stacking Cards */}
         <div className="relative w-full flex flex-col">
           {projectsList.map((project, index) => (
             <Card

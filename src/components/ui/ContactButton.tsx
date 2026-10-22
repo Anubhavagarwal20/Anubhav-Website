@@ -20,7 +20,7 @@ export function ContactButton({
 
   const classes = `
     inline-flex items-center justify-center rounded-full text-white font-medium uppercase tracking-widest
-    px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4
+    px-6 py-2.5 sm:px-10 sm:py-3.5 md:px-12 md:py-4
     text-xs sm:text-sm md:text-base
     transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]
     cursor-pointer select-none whitespace-nowrap

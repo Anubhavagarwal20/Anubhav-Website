@@ -66,13 +66,13 @@ export function MarqueeSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden w-full select-none"
+      className="bg-[#0C0C0C] pt-16 sm:pt-24 md:pt-36 pb-8 sm:pb-10 overflow-hidden w-full select-none"
       aria-label="Digital design and creative motion showcase"
     >
-      <div className="flex flex-col gap-3 w-full">
+      <div className="flex flex-col gap-2.5 sm:gap-3.5 w-full">
         {/* ─── Row 1: Moves RIGHT on scroll ─── */}
         <div
-          className="flex gap-3 w-max"
+          className="flex gap-2.5 sm:gap-3.5 w-max"
           style={{
             transform: row1Transform,
             willChange: 'transform',
@@ -81,14 +81,14 @@ export function MarqueeSection() {
           {tripledRow1.map((src, i) => (
             <div
               key={`row1-${i}`}
-              className="w-[420px] h-[270px] min-w-[420px] rounded-2xl overflow-hidden bg-[#181818] flex-shrink-0"
+              className="w-[240px] h-[155px] min-w-[240px] sm:w-[320px] sm:h-[205px] sm:min-w-[320px] md:w-[400px] md:h-[255px] md:min-w-[400px] rounded-2xl overflow-hidden bg-[#181818] flex-shrink-0"
             >
               <img
                 src={src}
                 alt="Creative digital marketing and web interface preview"
                 loading="lazy"
-                width={420}
-                height={270}
+                width={400}
+                height={255}
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>
@@ -97,7 +97,7 @@ export function MarqueeSection() {
 
         {/* ─── Row 2: Moves LEFT on scroll ─── */}
         <div
-          className="flex gap-3 w-max"
+          className="flex gap-2.5 sm:gap-3.5 w-max"
           style={{
             transform: row2Transform,
             willChange: 'transform',
@@ -106,14 +106,14 @@ export function MarqueeSection() {
           {tripledRow2.map((src, i) => (
             <div
               key={`row2-${i}`}
-              className="w-[420px] h-[270px] min-w-[420px] rounded-2xl overflow-hidden bg-[#181818] flex-shrink-0"
+              className="w-[240px] h-[155px] min-w-[240px] sm:w-[320px] sm:h-[205px] sm:min-w-[320px] md:w-[400px] md:h-[255px] md:min-w-[400px] rounded-2xl overflow-hidden bg-[#181818] flex-shrink-0"
             >
               <img
                 src={src}
                 alt="Interactive digital campaign visual preview"
                 loading="lazy"
-                width={420}
-                height={270}
+                width={400}
+                height={255}
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>

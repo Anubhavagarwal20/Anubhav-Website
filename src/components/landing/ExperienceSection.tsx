@@ -165,29 +165,29 @@ export function ExperienceSection() {
         </FadeIn>
 
         {/* Experience Cards */}
-        <div className="grid grid-cols-1 gap-6 sm:gap-8 mb-24 sm:mb-32">
+        <div className="grid grid-cols-1 gap-5 sm:gap-8 mb-20 sm:mb-32">
           {experienceList.map((item, index) => (
             <FadeIn key={item.number} delay={index * 0.08} y={30} className="w-full">
-              <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 hover:border-[#D7E2EA]/60 transition-colors duration-300">
+              <div className="rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-5 sm:p-7 md:p-10 hover:border-[#D7E2EA]/60 transition-colors duration-300">
                 {/* Header Row */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#D7E2EA]/10">
-                  <div className="flex items-center gap-4 sm:gap-6">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 pb-5 border-b border-[#D7E2EA]/10">
+                  <div className="flex items-center gap-3.5 sm:gap-6">
                     <span
-                      className="font-black text-[#D7E2EA]/40 leading-none select-none"
-                      style={{ fontSize: 'clamp(2rem, 5vw, 64px)' }}
+                      className="font-black text-[#D7E2EA]/40 leading-none select-none flex-shrink-0"
+                      style={{ fontSize: 'clamp(1.75rem, 4.5vw, 64px)' }}
                     >
                       {item.number}
                     </span>
                     <div>
-                      <h3 className="font-medium uppercase tracking-tight text-xl sm:text-2xl md:text-3xl text-[#D7E2EA]">
+                      <h3 className="font-medium uppercase tracking-tight text-lg sm:text-2xl md:text-3xl text-[#D7E2EA]">
                         {item.role}
                       </h3>
                       <div className="flex flex-wrap items-center gap-2 mt-1">
-                        <span className="text-base sm:text-lg font-light text-[#D7E2EA]/90">
+                        <span className="text-sm sm:text-lg font-light text-[#D7E2EA]/90">
                           {item.company}
                         </span>
                         <span className="text-[#D7E2EA]/40">•</span>
-                        <span className="text-xs uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-[#D7E2EA]/20 text-[#D7E2EA]/70">
+                        <span className="text-[10px] sm:text-xs uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#D7E2EA]/20 text-[#D7E2EA]/70">
                           {item.type}
                         </span>
                       </div>
@@ -195,7 +195,7 @@ export function ExperienceSection() {
                   </div>
 
                   <div className="flex flex-col md:items-end gap-1">
-                    <span className="text-xs sm:text-sm font-light uppercase tracking-wider text-[#D7E2EA]/60 whitespace-nowrap">
+                    <span className="text-xs sm:text-sm font-light uppercase tracking-wider text-[#D7E2EA]/60">
                       {item.period}
                     </span>
                     {item.dateNote && (
@@ -208,7 +208,7 @@ export function ExperienceSection() {
 
                 {/* Transition Note (if any) */}
                 {item.transitionNote && (
-                  <div className="mt-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs font-light text-[#D7E2EA]/80 leading-relaxed">
+                  <div className="mt-4 p-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs font-light text-[#D7E2EA]/80 leading-relaxed">
                     <span className="font-medium text-[#D7E2EA] uppercase tracking-wider text-[11px] mr-1.5">
                       Role Transition:
                     </span>
@@ -217,7 +217,7 @@ export function ExperienceSection() {
                 )}
 
                 {/* Highlights List */}
-                <div className="pt-5 flex flex-col gap-4">
+                <div className="pt-4 sm:pt-5 flex flex-col gap-3.5 sm:gap-4">
                   <ul className="space-y-2">
                     {item.highlights.map((highlight, hIdx) => (
                       <li
@@ -231,11 +231,11 @@ export function ExperienceSection() {
                   </ul>
 
                   {/* Skills tags */}
-                  <div className="flex flex-wrap gap-2 pt-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1.5">
                     {item.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1 rounded-full bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[11px] sm:text-xs font-light uppercase tracking-wider text-[#D7E2EA]/80"
+                        className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[10px] sm:text-xs font-light uppercase tracking-wider text-[#D7E2EA]/80"
                       >
                         {skill}
                       </span>
@@ -248,10 +248,10 @@ export function ExperienceSection() {
         </div>
 
         {/* Education & Leadership Two-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
           {/* Education */}
           <FadeIn delay={0.2} y={30}>
-            <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between">
+            <div className="rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-5 sm:p-7 md:p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block mb-2">
                   Academic Credentials

@@ -59,11 +59,11 @@ export function ContactSection() {
         </FadeIn>
 
         {/* Two-Column Grid: Left Contact Info / Right Schedule Meeting */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 mb-24 sm:mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 mb-20 sm:mb-32">
           {/* Left Column: Direct Info */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-8">
+          <div className="lg:col-span-5 flex flex-col justify-between gap-6 sm:gap-8">
             <FadeIn delay={0.1} y={30}>
-              <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col gap-8 h-full">
+              <div className="rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-5 sm:p-8 md:p-10 flex flex-col gap-6 sm:gap-8 h-full">
                 <div>
                   <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block mb-2">
                     Direct Contact
@@ -164,7 +164,7 @@ export function ContactSection() {
           {/* Right Column: Schedule Meeting */}
           <div className="lg:col-span-7">
             <FadeIn delay={0.2} y={30}>
-              <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-8 h-full">
+              <div className="rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-5 sm:p-8 md:p-10 flex flex-col justify-between gap-6 sm:gap-8 h-full">
                 <div className="flex flex-col gap-4">
                   <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block">
                     1-on-1 Consultation & Discovery

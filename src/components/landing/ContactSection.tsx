@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { Mail, Copy, Check, ArrowUpRight, Send } from 'lucide-react';
+import { Mail, Copy, Check, ArrowUpRight, Send, Loader2, AlertCircle } from 'lucide-react';
 import { FadeIn } from '../ui/FadeIn';
 
 function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {
@@ -19,14 +19,16 @@ function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [sentStatus, setSentStatus] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionSuccess, setSubmissionSuccess] = useState<boolean | null>(null);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
-  const email = 'anubhavagarwal2020@gmail.com';
+  const targetEmail = 'anubhavagarwal2020@gmail.com';
   const linkedinUrl = 'https://www.linkedin.com/in/anubhavagarwal20/';
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText(email);
+      await navigator.clipboard.writeText(targetEmail);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     } catch {
@@ -34,18 +36,62 @@ export function ContactSection() {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setSentStatus('Please fill in all fields before sending.');
+      setStatusMessage('Please fill in all required fields.');
+      setSubmissionSuccess(false);
       return;
     }
-    const mailto = `mailto:${email}?subject=Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`;
-    window.location.href = mailto;
-    setSentStatus('Opening email client...');
-    setTimeout(() => setSentStatus(null), 4000);
+
+    setIsSubmitting(true);
+    setStatusMessage(null);
+    setSubmissionSuccess(null);
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+          _subject: `New Portfolio Message from ${formData.name.trim()}`,
+          _captcha: 'false',
+          _template: 'table',
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (response.ok && (!data || data.success === 'true' || data.success === true || data.message)) {
+        setSubmissionSuccess(true);
+        setStatusMessage(
+          `Thank you, ${formData.name.trim()}! Your message has been sent directly to ${targetEmail}.`
+        );
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error((data && data.message) || 'Submission failed');
+      }
+    } catch {
+      // Fallback: direct mailto if network or adblocker interrupts AJAX
+      setSubmissionSuccess(false);
+      setStatusMessage(
+        'Sending via direct email client...'
+      );
+      const mailto = `mailto:${targetEmail}?subject=Portfolio Inquiry from ${encodeURIComponent(
+        formData.name
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+      window.location.href = mailto;
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,7 +134,7 @@ export function ContactSection() {
                     Anubhav Agarwal
                   </h3>
                   <p className="font-light text-sm sm:text-base text-[#D7E2EA]/75 mt-2 leading-relaxed">
-                    Digital Marketing Specialist &amp; MBA Candidate based in Delhi NCR, India.
+                    Digital Marketing Specialist based in Delhi NCR, India.
                   </p>
                 </div>
 
@@ -99,11 +145,11 @@ export function ContactSection() {
                   </span>
                   <div className="flex items-center justify-between gap-2 p-3 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15">
                     <a
-                      href={`mailto:${email}`}
+                      href={`mailto:${targetEmail}`}
                       className="text-xs sm:text-sm font-light text-[#D7E2EA] hover:underline truncate"
                       aria-label="Send email to Anubhav Agarwal"
                     >
-                      {email}
+                      {targetEmail}
                     </a>
                     <button
                       type="button"
@@ -150,7 +196,7 @@ export function ContactSection() {
                     </a>
 
                     <a
-                      href={`mailto:${email}`}
+                      href={`mailto:${targetEmail}`}
                       className="flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 hover:border-[#D7E2EA]/50 transition-colors"
                       aria-label="Email Anubhav Agarwal directly"
                     >
@@ -207,6 +253,7 @@ export function ContactSection() {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Enter your name"
                     className="w-full px-4 py-3.5 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[#D7E2EA] placeholder-[#D7E2EA]/30 text-sm focus:outline-none focus:border-[#D7E2EA]/60 transition-colors"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -223,6 +270,7 @@ export function ContactSection() {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@example.com"
                     className="w-full px-4 py-3.5 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[#D7E2EA] placeholder-[#D7E2EA]/30 text-sm focus:outline-none focus:border-[#D7E2EA]/60 transition-colors"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -239,24 +287,44 @@ export function ContactSection() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Describe your goals, project scope, or opportunity..."
                     className="w-full px-4 py-3.5 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[#D7E2EA] placeholder-[#D7E2EA]/30 text-sm focus:outline-none focus:border-[#D7E2EA]/60 transition-colors resize-none"
+                    disabled={isSubmitting}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] bg-[#D7E2EA] text-[#0C0C0C] font-semibold uppercase tracking-widest px-8 py-4 text-sm sm:text-base hover:bg-transparent hover:text-[#D7E2EA] transition-all duration-200 cursor-pointer select-none active:scale-[0.99] mt-2"
+                  disabled={isSubmitting}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D7E2EA] bg-[#D7E2EA] text-[#0C0C0C] font-semibold uppercase tracking-widest px-8 py-4 text-sm sm:text-base hover:bg-transparent hover:text-[#D7E2EA] transition-all duration-200 cursor-pointer select-none active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed mt-2"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Contact Me</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending Message...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      <span>Contact Me</span>
+                    </>
+                  )}
                 </button>
 
-                {sentStatus && (
-                  <p
+                {statusMessage && (
+                  <div
                     role="status"
-                    className="text-center text-xs font-light text-emerald-400 tracking-wider uppercase mt-1"
+                    className={`p-4 rounded-2xl border flex items-center gap-3 text-xs sm:text-sm mt-1 ${
+                      submissionSuccess
+                        ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                        : 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+                    }`}
                   >
-                    {sentStatus}
-                  </p>
+                    {submissionSuccess ? (
+                      <Check className="w-5 h-5 flex-shrink-0 text-emerald-400" />
+                    ) : (
+                      <AlertCircle className="w-5 h-5 flex-shrink-0 text-amber-400" />
+                    )}
+                    <span>{statusMessage}</span>
+                  </div>
                 )}
               </form>
             </FadeIn>

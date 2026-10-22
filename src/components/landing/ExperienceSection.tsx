@@ -105,19 +105,16 @@ const educationList = [
     degree: 'Master of Business Administration (MBA)',
     institution: 'Maharaja Agrasen Institute of Technology (MAIT), Rohini, Delhi',
     period: 'Expected 2027',
-    status: 'In progress',
   },
   {
     degree: 'Bachelor of Business Administration — Digital Marketing',
     institution: 'Chandigarh University, Ajitgarh, Punjab',
     period: 'Completed 2024',
-    status: 'Completed',
   },
   {
     degree: 'Class 12 — Commerce, CBSE',
     institution: 'Ajmani International School, Lakhimpur Kheri, Uttar Pradesh',
     period: 'Completed 2022',
-    status: 'Completed',
   },
 ];
 
@@ -266,14 +263,9 @@ export function ExperienceSection() {
                       key={idx}
                       className={idx !== 0 ? 'pt-6 border-t border-[#D7E2EA]/10' : ''}
                     >
-                      <div className="flex items-start justify-between gap-3">
-                        <h4 className="font-medium text-base sm:text-lg text-[#D7E2EA]">
-                          {edu.degree}
-                        </h4>
-                        <span className="text-xs uppercase px-2.5 py-1 rounded-full border border-[#D7E2EA]/20 text-[#D7E2EA]/80 whitespace-nowrap flex-shrink-0">
-                          {edu.status}
-                        </span>
-                      </div>
+                      <h4 className="font-medium text-base sm:text-lg text-[#D7E2EA]">
+                        {edu.degree}
+                      </h4>
                       <p className="font-light text-sm text-[#D7E2EA]/75 mt-1">
                         {edu.institution}
                       </p>

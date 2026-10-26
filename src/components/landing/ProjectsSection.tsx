@@ -20,19 +20,19 @@ const projectsList: ProjectData[] = [
     name: 'GEO SEO Lab',
     category: 'SEO & GEO Strategy',
     description:
-      'Worked on SEO and Generative Engine Optimization content, competitor research, content planning, and social media assets focused on digital visibility and AI-powered search.',
-    tags: ['SEO Strategy', 'GEO', 'Content Optimization', 'Competitor Research'],
+      'Spearheaded Generative Engine Optimization (GEO) research and search intent mapping to boost visibility across conversational AI engines (ChatGPT, Perplexity, Gemini, Google SGE). Engineered semantic keyword clusters, competitive visibility benchmarks, and high-authority educational content architectures.',
+    tags: ['SEO & GEO Strategy', 'AI Search Visibility', 'Perplexity & Gemini Citations', 'Search Intent Clusters', 'Content Architecture'],
     col1Img1: {
-      src: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
-      alt: 'GEO SEO Lab - AI search visibility analysis dashboard and keyword research framework',
+      src: '/projects/geoseolab-2.jpg',
+      alt: 'GEO SEO Lab - AI search intent clusters and search engine share workspace',
     },
     col1Img2: {
-      src: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85',
-      alt: 'GEO SEO Lab - Competitor search intent research and content optimization planner',
+      src: '/projects/geoseolab-3.jpg',
+      alt: 'GEO SEO Lab - AI citation knowledge graph and semantic keyword matrix',
     },
     col2Img: {
-      src: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85',
-      alt: 'GEO SEO Lab - Generative Engine Optimization strategy overview and educational content structure',
+      src: '/projects/geoseolab-1.jpg',
+      alt: 'GEO SEO Lab - High-tech AI search visibility and Generative Engine Optimization analytics dashboard',
     },
     link: '#experience',
   },
@@ -41,19 +41,19 @@ const projectsList: ProjectData[] = [
     name: 'Chloia',
     category: 'Amazon & Shopify E-commerce Operations',
     description:
-      'Worked on Amazon product listings, keyword research, catalog structure, product variations, listing copy, and e-commerce operations across Amazon and Shopify.',
-    tags: ['Amazon Seller Central', 'Shopify', 'Product Listings', 'E-commerce SEO'],
+      'Directed end-to-end marketplace operations across Amazon Seller Central and Shopify Plus. Structured high-converting product listings with modular A+ content, parent-child variation modeling, backend keyword attribution, and multi-channel live inventory synchronization.',
+    tags: ['Amazon Seller Central', 'Shopify Plus', 'A+ Content Optimization', 'Catalog Hierarchy', '18.4% Conv Rate'],
     col1Img1: {
-      src: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
-      alt: 'Chloia - Amazon Seller Central product catalog hierarchy and variant management interface',
+      src: '/projects/chloia-2.jpg',
+      alt: 'Chloia - High-converting Amazon product listing mockup with A+ content modules',
     },
     col1Img2: {
-      src: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85',
-      alt: 'Chloia - High-converting Amazon product listing titles, bullet points, and backend search terms',
+      src: '/projects/chloia-3.jpg',
+      alt: 'Chloia - Multi-channel storefront live inventory sync and variation matrix',
     },
     col2Img: {
-      src: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85',
-      alt: 'Chloia - Multi-channel e-commerce storefront integration and Shopify catalog management showcase',
+      src: '/projects/chloia-1.jpg',
+      alt: 'Chloia - Amazon Seller Central and Shopify sales growth and catalog operations dashboard',
     },
     link: '#experience',
   },
@@ -62,19 +62,19 @@ const projectsList: ProjectData[] = [
     name: 'Sri Ganpati Collection',
     category: 'Performance Marketing & Digital Content',
     description:
-      'Managed website and social media activities, supported Meta Ads campaign optimization, and created product creatives using AI-assisted design tools.',
-    tags: ['Meta Ads', 'Website Management', 'Product Creatives', 'Digital Marketing'],
+      'Architected performance marketing campaigns and paid social funnels, delivering a verified 2.0X ROAS on Meta Ads. Produced 20+ AI-assisted high-converting product creatives for ethnic wear collections and managed day-to-day e-commerce storefront operations.',
+    tags: ['Meta Ads Manager', '2.0X ROAS Delivered', 'AI Product Creatives', 'Ethnic Fashion E-Commerce', 'Funnel Optimization'],
     col1Img1: {
-      src: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
-      alt: 'Sri Ganpati Collection - Meta Ads campaign audience targeting and 2X ROI performance optimization',
+      src: '/projects/ganpati-2.jpg',
+      alt: 'Sri Ganpati Collection - Curated AI-assisted ethnic fashion ad creative grid',
     },
     col1Img2: {
-      src: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85',
-      alt: 'Sri Ganpati Collection - 20+ AI-assisted branded product creatives produced for social campaigns',
+      src: '/projects/ganpati-3.jpg',
+      alt: 'Sri Ganpati Collection - Mobile e-commerce store interface and Instagram Shop checkout',
     },
     col2Img: {
-      src: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85',
-      alt: 'Sri Ganpati Collection - Store website management, on-page SEO layout, and digital presence',
+      src: '/projects/ganpati-1.jpg',
+      alt: 'Sri Ganpati Collection - Meta Ads Manager dashboard showcasing 2.0X ROAS performance metrics',
     },
     link: '#experience',
   },
@@ -161,34 +161,34 @@ function Card({ project, index, totalCards }: CardProps) {
           {/* Left Column (5 of 12 cols): 2 stacked images */}
           <div className="md:col-span-5 flex flex-col sm:flex-row md:flex-col gap-3 sm:gap-4 md:gap-6">
             <div
-              className="w-full overflow-hidden rounded-[18px] sm:rounded-[24px] md:rounded-[32px] bg-[#141414] h-[150px] sm:h-[180px] md:h-[170px] lg:h-[200px]"
+              className="w-full overflow-hidden rounded-[18px] sm:rounded-[24px] md:rounded-[32px] bg-[#141414] h-[150px] sm:h-[180px] md:h-[170px] lg:h-[200px] group"
             >
               <img
                 src={project.col1Img1.src}
                 alt={project.col1Img1.alt}
                 loading="lazy"
-                className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px]"
+                className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px] group-hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div
-              className="w-full overflow-hidden rounded-[18px] sm:rounded-[24px] md:rounded-[32px] bg-[#141414] h-[150px] sm:h-[180px] md:h-[190px] lg:h-[230px]"
+              className="w-full overflow-hidden rounded-[18px] sm:rounded-[24px] md:rounded-[32px] bg-[#141414] h-[150px] sm:h-[180px] md:h-[190px] lg:h-[230px] group"
             >
               <img
                 src={project.col1Img2.src}
                 alt={project.col1Img2.alt}
                 loading="lazy"
-                className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px]"
+                className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px] group-hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
 
           {/* Right Column (7 of 12 cols): 1 tall image */}
-          <div className="md:col-span-7 w-full overflow-hidden rounded-[18px] sm:rounded-[24px] md:rounded-[32px] bg-[#141414] h-[200px] sm:h-[260px] md:h-full min-h-[200px] sm:min-h-[260px]">
+          <div className="md:col-span-7 w-full overflow-hidden rounded-[18px] sm:rounded-[24px] md:rounded-[32px] bg-[#141414] h-[200px] sm:h-[260px] md:h-full min-h-[200px] sm:min-h-[260px] group">
             <img
               src={project.col2Img.src}
               alt={project.col2Img.alt}
               loading="lazy"
-              className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px]"
+              className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px] group-hover:scale-105 transition-transform duration-500"
             />
           </div>
         </div>

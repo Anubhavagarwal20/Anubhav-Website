@@ -15,6 +15,7 @@ import {
 import { FadeIn } from '../ui/FadeIn';
 import { SpotlightCard } from '../ui/SpotlightCard';
 import avatarImg from '../../assets/avatar.png';
+import { trackAnalytics } from '../../utils/analytics';
 
 function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {
   return (
@@ -66,6 +67,7 @@ export function ContactSection() {
     try {
       await navigator.clipboard.writeText(targetEmail);
       setCopied(true);
+      trackAnalytics.emailInteraction('copy', targetEmail);
       setTimeout(() => setCopied(false), 2500);
     } catch {
       // Fallback
@@ -74,6 +76,7 @@ export function ContactSection() {
 
   const handleTopicClick = (topic: { label: string; subject: string }) => {
     setCopiedTopic(topic.label);
+    trackAnalytics.quickTopicSelect(topic.label);
     setTimeout(() => setCopiedTopic(null), 2000);
     window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(topic.subject)}`;
   };
@@ -231,6 +234,7 @@ export function ContactSection() {
                       </div>
                       <a
                         href={`mailto:${targetEmail}`}
+                        onClick={() => trackAnalytics.emailInteraction('click', targetEmail)}
                         className="text-xs sm:text-sm font-mono text-[#D7E2EA] hover:text-white hover:underline truncate"
                         aria-label="Send email to Anubhav Agarwal"
                       >
@@ -273,6 +277,7 @@ export function ContactSection() {
                       href={linkedinUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackAnalytics.socialClick('LinkedIn', linkedinUrl)}
                       className="group/link flex-1 flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#18181F] border border-white/10 hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 hover:shadow-[0_0_25px_rgba(10,102,194,0.18)] transition-all duration-300"
                       aria-label="View LinkedIn Profile of Anubhav Agarwal (opens in new tab)"
                     >
@@ -289,6 +294,7 @@ export function ContactSection() {
 
                     <a
                       href={`mailto:${targetEmail}`}
+                      onClick={() => trackAnalytics.emailInteraction('click', targetEmail)}
                       className="group/email flex-1 flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#18181F] border border-white/10 hover:border-white/40 hover:bg-white/[0.08] hover:shadow-[0_0_25px_rgba(255,255,255,0.12)] transition-all duration-300"
                       aria-label="Email Anubhav Agarwal directly"
                     >
@@ -425,6 +431,7 @@ export function ContactSection() {
                     href={calendlyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackAnalytics.scheduleMeetingClick('contact_section')}
                     className="relative w-full inline-flex items-center justify-center p-[1.5px] rounded-2xl sm:rounded-full overflow-hidden transition-all duration-300 active:scale-[0.99] group cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D7E2EA]"
                     aria-label="Schedule a meeting with Anubhav Agarwal on Calendly (opens in new tab)"
                   >

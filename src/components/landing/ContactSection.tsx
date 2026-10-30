@@ -210,18 +210,49 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                {/* Schedule Button */}
+                {/* Schedule Button with Animated Glowing Border Beam Effect */}
                 <div className="pt-2">
                   <a
                     href={calendlyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-3 rounded-full border-2 border-[#D7E2EA] bg-[#D7E2EA] text-[#0C0C0C] font-semibold uppercase tracking-widest px-8 py-5 text-sm sm:text-base hover:bg-transparent hover:text-[#D7E2EA] transition-all duration-200 cursor-pointer select-none active:scale-[0.99] group shadow-lg shadow-white/5"
+                    className="relative w-full inline-flex items-center justify-center p-[1.5px] rounded-2xl sm:rounded-full overflow-hidden transition-all duration-300 active:scale-[0.99] group cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D7E2EA]"
                     aria-label="Schedule a meeting with Anubhav Agarwal on Calendly (opens in new tab)"
                   >
-                    <Calendar className="w-5 h-5 text-[#0C0C0C] group-hover:text-[#D7E2EA] transition-colors" />
-                    <span>Schedule Meeting</span>
-                    <ArrowUpRight className="w-5 h-5 text-[#0C0C0C] group-hover:text-[#D7E2EA] transition-colors" />
+                    {/* Atmospheric soft blur beam for glowing halo */}
+                    <span
+                      className="absolute inset-[-150%] aspect-square pointer-events-none opacity-80 blur-[8px] transition-opacity duration-300 group-hover:opacity-100 group-hover:blur-[10px]"
+                      style={{
+                        background:
+                          'conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 280deg, rgba(215, 226, 234, 0.4) 325deg, rgba(255, 255, 255, 0.9) 352deg, #FFFFFF 360deg)',
+                        animation: 'border-beam-spin 4s linear infinite',
+                      }}
+                      aria-hidden="true"
+                    />
+
+                    {/* Sharp glowing perimeter beam line */}
+                    <span
+                      className="absolute inset-[-150%] aspect-square pointer-events-none"
+                      style={{
+                        background:
+                          'conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 280deg, rgba(215, 226, 234, 0.25) 320deg, rgba(255, 255, 255, 0.8) 348deg, #FFFFFF 360deg)',
+                        animation: 'border-beam-spin 4s linear infinite',
+                      }}
+                      aria-hidden="true"
+                    />
+
+                    {/* Subtle translucent perimeter border */}
+                    <span
+                      className="absolute inset-0 rounded-2xl sm:rounded-full border border-white/15 pointer-events-none"
+                      aria-hidden="true"
+                    />
+
+                    {/* Button interior surface */}
+                    <span className="relative z-10 w-full flex items-center justify-center gap-3 rounded-[calc(1rem-1.5px)] sm:rounded-full bg-gradient-to-b from-[#18181D] to-[#101014] group-hover:from-[#202028] group-hover:to-[#15151B] px-8 py-5 text-sm sm:text-base font-semibold uppercase tracking-widest text-[#D7E2EA] transition-all duration-300 shadow-xl shadow-black/40">
+                      <Calendar className="w-5 h-5 text-[#D7E2EA] group-hover:text-white group-hover:scale-110 transition-all duration-200" />
+                      <span className="tracking-widest">Schedule Meeting</span>
+                      <ArrowUpRight className="w-5 h-5 text-[#D7E2EA] group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
+                    </span>
                   </a>
                 </div>
               </div>

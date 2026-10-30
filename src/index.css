@@ -74,3 +74,24 @@ body {
     cursor: text;
   }
 }
+
+/* ─── Glowing Border Beam Animation ──────────────────────────────────────── */
+@keyframes border-beam-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-border-beam {
+  animation: border-beam-spin 4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-border-beam {
+    animation: none !important;
+  }
+}
+

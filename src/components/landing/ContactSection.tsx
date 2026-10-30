@@ -1,6 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Mail, Copy, Check, ArrowUpRight, Calendar, Clock, Video, MapPin } from 'lucide-react';
+import {
+  Mail,
+  Copy,
+  Check,
+  ArrowUpRight,
+  Calendar,
+  Clock,
+  Video,
+  MapPin,
+  Sparkles,
+  MessageSquare,
+  CheckCircle2,
+} from 'lucide-react';
 import { FadeIn } from '../ui/FadeIn';
+import { SpotlightCard } from '../ui/SpotlightCard';
 import avatarImg from '../../assets/avatar.png';
 
 function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {
@@ -16,8 +29,17 @@ function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {
   );
 }
 
+const discussionTopics = [
+  { label: 'SEO & GEO Growth', subject: 'Inquiry: SEO & AI Search Optimization' },
+  { label: 'E-commerce & Amazon', subject: 'Inquiry: Marketplace Operations & Catalog Growth' },
+  { label: 'Meta Paid Ads', subject: 'Inquiry: Performance Marketing & Paid Social' },
+  { label: 'Full-Time Role', subject: 'Career Opportunity: Marketing Role for Anubhav' },
+  { label: 'Freelance Project', subject: 'Freelance Collaboration with Anubhav' },
+];
+
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
+  const [copiedTopic, setCopiedTopic] = useState<string | null>(null);
   const [localTime, setLocalTime] = useState<string>('');
 
   const targetEmail = 'anubhavagarwal2020@gmail.com';
@@ -50,38 +72,101 @@ export function ContactSection() {
     }
   };
 
+  const handleTopicClick = (topic: { label: string; subject: string }) => {
+    setCopiedTopic(topic.label);
+    setTimeout(() => setCopiedTopic(null), 2000);
+    window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(topic.subject)}`;
+  };
+
   return (
     <section
       id="contact"
-      className="bg-[#0C0C0C] relative z-10 px-5 sm:px-8 md:px-10 pt-20 sm:pt-28 md:pt-36 pb-12 sm:pb-16 text-[#D7E2EA]"
+      className="bg-[#0C0C0C] relative z-10 px-5 sm:px-8 md:px-10 pt-20 sm:pt-28 md:pt-36 pb-12 sm:pb-16 text-[#D7E2EA] overflow-hidden"
       aria-labelledby="contact-heading"
     >
-      <div className="max-w-6xl mx-auto w-full">
-        {/* Section Heading */}
+      {/* Background Floating Ambient Glows */}
+      <div
+        className="absolute top-1/3 -left-40 w-96 h-96 bg-gradient-to-tr from-cyan-600/10 via-blue-600/5 to-transparent rounded-full blur-3xl pointer-events-none animate-float-slow"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-1/3 -right-40 w-96 h-96 bg-gradient-to-bl from-purple-600/10 via-indigo-600/5 to-transparent rounded-full blur-3xl pointer-events-none animate-float-reverse"
+        aria-hidden="true"
+      />
+
+      <div className="max-w-6xl mx-auto w-full relative z-10">
+        {/* Section Heading & Subtitle */}
         <FadeIn delay={0} y={40}>
-          <h2
-            id="contact-heading"
-            className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-4 sm:mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 8vw, 110px)' }}
-          >
-            Let&apos;s Discuss Your Next Project
-          </h2>
-          <div className="text-center font-light text-[#D7E2EA]/75 text-sm sm:text-base md:text-lg mb-16 sm:mb-20 md:mb-24 max-w-2xl mx-auto space-y-2">
-            <p>
-              I&apos;m open to full-time digital marketing opportunities, freelance projects, e-commerce consulting, and performance marketing collaborations.
-            </p>
-            <p className="text-xs sm:text-sm text-[#D7E2EA]/60">
-              Whether you need help with SEO, AI search visibility, marketplace operations, or content strategy, let&apos;s discuss your goals.
-            </p>
+          <div className="flex flex-col items-center mb-16 sm:mb-20 md:mb-24 text-center">
+            {/* Top Availability Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-md text-[11px] font-mono uppercase tracking-widest text-emerald-300 mb-5 shadow-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span>Available for Full-Time &amp; High-Impact Projects</span>
+            </div>
+
+            <div className="relative">
+              {/* Ambient backlight glow behind text */}
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-cyan-400/15 to-purple-500/10 blur-2xl -z-10 rounded-full animate-aura-pulse pointer-events-none"
+                aria-hidden="true"
+              />
+              <h2
+                id="contact-heading"
+                className="hero-heading font-black uppercase leading-none tracking-tight mb-4 sm:mb-6"
+                style={{ fontSize: 'clamp(2.5rem, 8vw, 110px)' }}
+              >
+                Let&apos;s Discuss Your Next Project
+              </h2>
+            </div>
+
+            <div className="text-center font-light text-[#D7E2EA]/75 text-sm sm:text-base md:text-lg max-w-2xl mx-auto space-y-2 mb-8">
+              <p>
+                I&apos;m open to full-time digital marketing opportunities, freelance projects, e-commerce consulting, and performance marketing collaborations.
+              </p>
+              <p className="text-xs sm:text-sm text-[#D7E2EA]/60">
+                Whether you need help with SEO, AI search visibility, marketplace operations, or content strategy, let&apos;s discuss your goals.
+              </p>
+            </div>
+
+            {/* Interactive Discussion Topics Quick Selectors */}
+            <div className="flex flex-wrap items-center justify-center gap-2 max-w-3xl">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#D7E2EA]/50 mr-1 flex items-center gap-1.5">
+                <MessageSquare className="w-3.5 h-3.5 text-cyan-400" />
+                Quick Topics:
+              </span>
+              {discussionTopics.map((topic) => (
+                <button
+                  key={topic.label}
+                  type="button"
+                  onClick={() => handleTopicClick(topic)}
+                  className={`group px-3 py-1.5 rounded-full text-xs font-mono tracking-wider border transition-all duration-200 cursor-pointer select-none active:scale-95 flex items-center gap-1.5 ${
+                    copiedTopic === topic.label
+                      ? 'border-emerald-500 bg-emerald-500/20 text-emerald-300'
+                      : 'border-white/10 bg-white/[0.03] text-[#D7E2EA]/75 hover:border-cyan-400/40 hover:bg-white/[0.08] hover:text-white'
+                  }`}
+                  title={`Start email inquiry about ${topic.label}`}
+                >
+                  <span>{topic.label}</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
+              ))}
+            </div>
           </div>
         </FadeIn>
 
-        {/* Two-Column Grid: Left Contact Info / Right Schedule Meeting */}
+        {/* Two-Column Grid: Left Direct Info / Right Schedule Meeting */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 mb-20 sm:mb-32">
           {/* Left Column: Direct Info */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-6 sm:gap-8">
-            <FadeIn delay={0.1} y={30}>
-              <div className="relative rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-white/15 bg-gradient-to-b from-[#16161B] via-[#121215] to-[#0E0E12] p-5 sm:p-8 md:p-9 flex flex-col justify-between gap-6 sm:gap-8 h-full shadow-2xl overflow-hidden group">
+            <FadeIn delay={0.1} y={30} className="h-full">
+              <SpotlightCard
+                spotlightColor="rgba(79, 140, 255, 0.1)"
+                spotlightSize={550}
+                className="group rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-white/15 bg-gradient-to-b from-[#16161B] via-[#121215] to-[#0E0E12] p-5 sm:p-8 md:p-9 flex flex-col justify-between gap-6 sm:gap-8 h-full shadow-2xl hover:border-white/35 transition-all duration-300"
+              >
                 {/* Atmospheric ambient radiant glow */}
                 <div
                   className="absolute -top-24 -right-24 w-60 h-60 bg-gradient-to-br from-[#4F8CFF]/15 via-[#4DE2FF]/10 to-transparent rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700"
@@ -119,7 +204,7 @@ export function ContactSection() {
                         Available
                       </span>
                     </div>
-                    <h3 className="font-semibold uppercase tracking-tight text-xl sm:text-2xl md:text-3xl text-[#D7E2EA] truncate">
+                    <h3 className="font-semibold uppercase tracking-tight text-xl sm:text-2xl md:text-3xl text-[#D7E2EA] truncate group-hover:text-white transition-colors">
                       Anubhav Agarwal
                     </h3>
                     <p className="font-light text-xs sm:text-sm text-[#D7E2EA]/75 mt-0.5 leading-snug truncate">
@@ -239,19 +324,37 @@ export function ContactSection() {
                     </span>
                   </span>
                 </div>
-              </div>
+              </SpotlightCard>
             </FadeIn>
           </div>
 
           {/* Right Column: Schedule Meeting */}
           <div className="lg:col-span-7">
-            <FadeIn delay={0.2} y={30}>
-              <div className="rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-5 sm:p-8 md:p-10 flex flex-col justify-between gap-6 sm:gap-8 h-full">
-                <div className="flex flex-col gap-4">
-                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block">
-                    1-on-1 Consultation & Discovery
-                  </span>
-                  <h3 className="font-medium uppercase tracking-tight text-2xl sm:text-4xl text-[#D7E2EA]">
+            <FadeIn delay={0.2} y={30} className="h-full">
+              <SpotlightCard
+                spotlightColor="rgba(215, 226, 234, 0.08)"
+                spotlightSize={600}
+                className="group/sched rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-white/15 bg-gradient-to-b from-[#16161B] via-[#121215] to-[#0E0E12] p-5 sm:p-8 md:p-10 flex flex-col justify-between gap-6 sm:gap-8 h-full shadow-2xl hover:border-white/35 transition-all duration-300 relative overflow-hidden"
+              >
+                {/* Atmospheric ambient radiant glow in opposite corner */}
+                <div
+                  className="absolute -top-24 -left-24 w-60 h-60 bg-gradient-to-br from-indigo-500/10 via-cyan-400/10 to-transparent rounded-full blur-3xl pointer-events-none group-hover/sched:scale-125 transition-transform duration-700"
+                  aria-hidden="true"
+                />
+
+                <div className="relative z-10 flex flex-col gap-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                      1-on-1 Consultation &amp; Discovery
+                    </span>
+                    <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-400 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Live Calendar Synced
+                    </span>
+                  </div>
+
+                  <h3 className="font-semibold uppercase tracking-tight text-2xl sm:text-4xl text-[#D7E2EA] group-hover/sched:text-white transition-colors">
                     Schedule A Meeting
                   </h3>
                   <p className="font-light text-sm sm:text-base text-[#D7E2EA]/75 leading-relaxed">
@@ -259,41 +362,65 @@ export function ContactSection() {
                   </p>
                 </div>
 
-                {/* Feature highlights */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div className="p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/10 flex flex-col gap-2">
-                    <Clock className="w-5 h-5 text-[#D7E2EA]" />
-                    <span className="text-xs font-medium uppercase tracking-wider text-[#D7E2EA]">
+                {/* Interactive 3D Feature Highlights */}
+                <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="group/chip p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 hover:bg-white/[0.07] hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(79,140,255,0.2)] transition-all duration-300 flex flex-col gap-2">
+                    <div className="p-2 rounded-xl bg-white/5 w-fit text-[#D7E2EA] group-hover/chip:text-cyan-300 group-hover/chip:scale-110 transition-all">
+                      <Clock className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-medium uppercase tracking-wider text-[#D7E2EA] group-hover/chip:text-white transition-colors">
                       30-Min Call
                     </span>
-                    <span className="text-[11px] text-[#D7E2EA]/60 font-light">
+                    <span className="text-[11px] text-[#D7E2EA]/60 font-light leading-snug">
                       Focused strategy &amp; goal discussion
                     </span>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/10 flex flex-col gap-2">
-                    <Video className="w-5 h-5 text-[#D7E2EA]" />
-                    <span className="text-xs font-medium uppercase tracking-wider text-[#D7E2EA]">
+                  <div className="group/chip p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 hover:bg-white/[0.07] hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(79,140,255,0.2)] transition-all duration-300 flex flex-col gap-2">
+                    <div className="p-2 rounded-xl bg-white/5 w-fit text-[#D7E2EA] group-hover/chip:text-cyan-300 group-hover/chip:scale-110 transition-all">
+                      <Video className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-medium uppercase tracking-wider text-[#D7E2EA] group-hover/chip:text-white transition-colors">
                       Google Meet
                     </span>
-                    <span className="text-[11px] text-[#D7E2EA]/60 font-light">
+                    <span className="text-[11px] text-[#D7E2EA]/60 font-light leading-snug">
                       Direct 1-on-1 video consultation
                     </span>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/10 flex flex-col gap-2">
-                    <Calendar className="w-5 h-5 text-[#D7E2EA]" />
-                    <span className="text-xs font-medium uppercase tracking-wider text-[#D7E2EA]">
+                  <div className="group/chip p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-400/40 hover:bg-white/[0.07] hover:-translate-y-1 hover:shadow-[0_10px_25px_-5px_rgba(79,140,255,0.2)] transition-all duration-300 flex flex-col gap-2">
+                    <div className="p-2 rounded-xl bg-white/5 w-fit text-[#D7E2EA] group-hover/chip:text-cyan-300 group-hover/chip:scale-110 transition-all">
+                      <Calendar className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-medium uppercase tracking-wider text-[#D7E2EA] group-hover/chip:text-white transition-colors">
                       Instant Booking
                     </span>
-                    <span className="text-[11px] text-[#D7E2EA]/60 font-light">
+                    <span className="text-[11px] text-[#D7E2EA]/60 font-light leading-snug">
                       Live sync with Calendly availability
                     </span>
                   </div>
                 </div>
 
+                {/* 3-Step Visual Process Progression */}
+                <div className="relative z-10 p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.07] flex items-center justify-between text-[11px] font-mono text-[#D7E2EA]/70">
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>1. Pick Slot</span>
+                  </span>
+                  <span className="text-white/20">➔</span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>2. Auto Calendar Invite</span>
+                  </span>
+                  <span className="text-white/20">➔</span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>3. Strategic Plan</span>
+                  </span>
+                </div>
+
                 {/* Schedule Button with Animated Glowing Border Beam Effect */}
-                <div className="pt-2">
+                <div className="relative z-10 pt-1">
                   <a
                     href={calendlyUrl}
                     target="_blank"
@@ -337,13 +464,13 @@ export function ContactSection() {
                     </span>
                   </a>
                 </div>
-              </div>
+              </SpotlightCard>
             </FadeIn>
           </div>
         </div>
 
         {/* Minimal Footer */}
-        <div className="pt-8 border-t border-[#D7E2EA]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#D7E2EA]/75">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#D7E2EA]/75">
           <p>© {new Date().getFullYear()} Anubhav Agarwal. All rights reserved.</p>
           <div className="flex items-center gap-6 uppercase tracking-wider">
             <a href="#about" className="hover:text-white transition-colors">

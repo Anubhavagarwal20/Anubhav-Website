@@ -89,8 +89,53 @@ body {
   animation: border-beam-spin 4s linear infinite;
 }
 
+/* ─── Ambient Glow Floating Animations ───────────────────────────────────── */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(25px, -20px) scale(1.08);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-25px, 20px) scale(0.95);
+  }
+}
+
+@keyframes aura-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.12);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 15s ease-in-out infinite;
+}
+
+.animate-aura-pulse {
+  animation: aura-pulse 8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-border-beam {
+  .animate-border-beam,
+  .animate-float-slow,
+  .animate-float-reverse,
+  .animate-aura-pulse {
     animation: none !important;
   }
 }

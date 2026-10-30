@@ -1,4 +1,6 @@
+import { Briefcase, GraduationCap, Award, Sparkles, ChevronRight } from 'lucide-react';
 import { FadeIn } from '../ui/FadeIn';
+import { SpotlightCard } from '../ui/SpotlightCard';
 
 interface ExperienceItem {
   number: string;
@@ -6,6 +8,7 @@ interface ExperienceItem {
   company: string;
   period: string;
   type: string;
+  isActive?: boolean;
   transitionNote?: string;
   dateNote?: string;
   highlights: string[];
@@ -19,6 +22,7 @@ const experienceList: ExperienceItem[] = [
     company: 'GEO SEO Lab',
     period: 'April 2026 – Present',
     type: 'Internship / Part-time',
+    isActive: true,
     highlights: [
       'Manage multi-channel content and social media activities across LinkedIn, Instagram, Facebook, X, and Reddit.',
       'Support SEO and GEO strategies through blog writing, keyword research, and content optimization.',
@@ -33,6 +37,7 @@ const experienceList: ExperienceItem[] = [
     company: 'Chloia',
     period: 'April 2026 – Present',
     type: 'Internship → Freelance',
+    isActive: true,
     transitionNote:
       'Started as an Amazon E-commerce Listing Intern (26 April 2026 – 28 May 2026), continuing with ongoing freelance e-commerce operations across Amazon and Shopify.',
     highlights: [
@@ -105,16 +110,22 @@ const educationList = [
     degree: 'Master of Business Administration (MBA)',
     institution: 'Maharaja Agrasen Institute of Technology (MAIT), Rohini, Delhi',
     period: 'Expected 2027',
+    status: 'In Progress',
+    badgeColor: 'border-cyan-500/30 bg-cyan-500/10 text-cyan-300',
   },
   {
     degree: 'Bachelor of Business Administration — Digital Marketing',
     institution: 'Chandigarh University, Ajitgarh, Punjab',
-    period: 'Completed 2024',
+    period: 'Graduated 2024',
+    status: 'Graduated',
+    badgeColor: 'border-white/15 bg-white/5 text-[#D7E2EA]/80',
   },
   {
     degree: 'Class 12 — Commerce, CBSE',
     institution: 'Ajmani International School, Lakhimpur Kheri, Uttar Pradesh',
     period: 'Completed 2022',
+    status: 'CBSE Board',
+    badgeColor: 'border-white/15 bg-white/5 text-[#D7E2EA]/80',
   },
 ];
 
@@ -124,18 +135,21 @@ const leadershipList = [
     organization: 'E-Summit, Maharaja Agrasen Institute of Technology',
     detail:
       'Led registrations and event operations and hosted a three-round digital marketing competition featuring case studies and marketing-tool challenges.',
+    tag: 'Flagship Event',
   },
   {
     title: 'Organizing Committee Member — Alumni Cell',
     organization: 'Maharaja Agrasen Institute of Technology',
     detail:
       'Supported alumni outreach, event registrations, stage logistics, and RSVP coordination.',
+    tag: 'Campus Outreach',
   },
   {
     title: 'Graphic Designer & Event Coordinator',
     organization: 'Chandigarh University — Apex Department and Event Management',
     detail:
       'Designed promotional graphics and event banners and coordinated student-team workflows.',
+    tag: 'Design & Logistics',
   },
 ];
 
@@ -143,56 +157,91 @@ export function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="bg-[#0C0C0C] relative z-10 px-5 sm:px-8 md:px-10 py-20 sm:py-28 md:py-36 text-[#D7E2EA]"
+      className="bg-[#0C0C0C] relative z-10 px-5 sm:px-8 md:px-10 py-20 sm:py-28 md:py-36 text-[#D7E2EA] overflow-hidden"
       aria-labelledby="experience-heading"
     >
-      <div className="max-w-6xl mx-auto w-full">
-        {/* Section Heading */}
+      {/* Background Floating Ambient Glows */}
+      <div
+        className="absolute top-1/4 -left-48 w-96 h-96 bg-gradient-to-br from-cyan-600/10 via-blue-600/5 to-transparent rounded-full blur-3xl pointer-events-none animate-float-slow"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-1/4 -right-48 w-96 h-96 bg-gradient-to-tl from-purple-600/10 via-indigo-600/5 to-transparent rounded-full blur-3xl pointer-events-none animate-float-reverse"
+        aria-hidden="true"
+      />
+
+      <div className="max-w-6xl mx-auto w-full relative z-10">
+        {/* Section Heading & Subtitle */}
         <FadeIn delay={0} y={40}>
-          <h2
-            id="experience-heading"
-            className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-4 sm:mb-6"
-            style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
-          >
-            Experience
-          </h2>
-          <p className="text-center font-light uppercase tracking-widest text-[#D7E2EA]/60 text-xs sm:text-sm md:text-base mb-16 sm:mb-20 md:mb-24 max-w-2xl mx-auto">
-            Professional record in SEO, GEO, E-Commerce, and Performance Marketing
-          </p>
+          <div className="flex flex-col items-center mb-16 sm:mb-20 md:mb-24 text-center">
+            {/* Top Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-md text-[11px] font-mono uppercase tracking-widest text-[#D7E2EA]/80 mb-5 shadow-sm">
+              <Briefcase className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Career Trajectory &amp; Impact</span>
+            </div>
+
+            <h2
+              id="experience-heading"
+              className="hero-heading font-black uppercase leading-none tracking-tight mb-4 sm:mb-6"
+              style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+            >
+              Experience
+            </h2>
+
+            <p className="font-light uppercase tracking-widest text-[#D7E2EA]/60 text-xs sm:text-sm md:text-base max-w-2xl mx-auto">
+              Professional record in SEO, GEO, E-Commerce, and Performance Marketing
+            </p>
+          </div>
         </FadeIn>
 
-        {/* Experience Cards */}
-        <div className="grid grid-cols-1 gap-5 sm:gap-8 mb-20 sm:mb-32">
+        {/* Experience Cards with Spotlight, Hover Micro-interactions, and Active Beacon */}
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 mb-20 sm:mb-32">
           {experienceList.map((item, index) => (
             <FadeIn key={item.number} delay={index * 0.08} y={30} className="w-full">
-              <div className="rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-5 sm:p-7 md:p-10 hover:border-[#D7E2EA]/60 transition-colors duration-300">
+              <SpotlightCard
+                spotlightColor="rgba(215, 226, 234, 0.08)"
+                spotlightSize={550}
+                className="group rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-white/15 bg-gradient-to-b from-[#15151A] via-[#111115] to-[#0D0D11] p-5 sm:p-7 md:p-10 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.85)] transition-all duration-300"
+              >
                 {/* Header Row */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 pb-5 border-b border-[#D7E2EA]/10">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 pb-5 border-b border-white/10">
                   <div className="flex items-center gap-3.5 sm:gap-6">
+                    {/* Dynamic Holographic / Metallic Number */}
                     <span
-                      className="font-black text-[#D7E2EA]/40 leading-none select-none flex-shrink-0"
-                      style={{ fontSize: 'clamp(1.75rem, 4.5vw, 64px)' }}
+                      className="font-black bg-gradient-to-b from-white/40 via-white/20 to-white/5 group-hover:from-white group-hover:to-cyan-200/80 bg-clip-text text-transparent leading-none select-none flex-shrink-0 transition-all duration-300 drop-shadow-sm group-hover:drop-shadow-[0_0_20px_rgba(215,226,234,0.35)]"
+                      style={{ fontSize: 'clamp(2rem, 5vw, 68px)' }}
                     >
                       {item.number}
                     </span>
+
                     <div>
-                      <h3 className="font-medium uppercase tracking-tight text-lg sm:text-2xl md:text-3xl text-[#D7E2EA]">
-                        {item.role}
-                      </h3>
-                      <div className="flex flex-wrap items-center gap-2 mt-1">
-                        <span className="text-sm sm:text-lg font-light text-[#D7E2EA]/90">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm sm:text-lg font-light text-[#D7E2EA]/90 group-hover:text-white transition-colors">
                           {item.company}
                         </span>
                         <span className="text-[#D7E2EA]/40">•</span>
-                        <span className="text-[10px] sm:text-xs uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#D7E2EA]/20 text-[#D7E2EA]/70">
+                        <span className="text-[10px] sm:text-xs uppercase tracking-wider px-2 py-0.5 rounded-full border border-white/15 text-[#D7E2EA]/70 bg-white/[0.03]">
                           {item.type}
                         </span>
+                        {item.isActive && (
+                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[10px] font-mono tracking-wider ml-1">
+                            <span className="relative flex h-1.5 w-1.5">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                            </span>
+                            Active
+                          </span>
+                        )}
                       </div>
+
+                      <h3 className="font-medium uppercase tracking-tight text-lg sm:text-2xl md:text-3xl text-[#D7E2EA] group-hover:text-white transition-colors">
+                        {item.role}
+                      </h3>
                     </div>
                   </div>
 
                   <div className="flex flex-col md:items-end gap-1">
-                    <span className="text-xs sm:text-sm font-light uppercase tracking-wider text-[#D7E2EA]/60">
+                    <span className="text-xs sm:text-sm font-light uppercase tracking-wider text-[#D7E2EA]/60 font-mono">
                       {item.period}
                     </span>
                     {item.dateNote && (
@@ -203,57 +252,70 @@ export function ExperienceSection() {
                   </div>
                 </div>
 
-                {/* Transition Note (if any) */}
+                {/* Role Transition Highlight Callout (Chloia) */}
                 {item.transitionNote && (
-                  <div className="mt-4 p-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs font-light text-[#D7E2EA]/80 leading-relaxed">
-                    <span className="font-medium text-[#D7E2EA] uppercase tracking-wider text-[11px] mr-1.5">
-                      Role Transition:
-                    </span>
-                    {item.transitionNote}
+                  <div className="mt-4 p-3.5 rounded-xl border-l-2 border-cyan-400/80 bg-gradient-to-r from-cyan-950/30 via-white/[0.02] to-transparent border-t border-r border-b border-white/[0.06] text-xs font-light text-[#D7E2EA]/85 leading-relaxed flex items-start gap-2.5">
+                    <Sparkles className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-medium text-white uppercase tracking-wider text-[11px] mr-1.5">
+                        Role Transition:
+                      </span>
+                      {item.transitionNote}
+                    </div>
                   </div>
                 )}
 
-                {/* Highlights List */}
-                <div className="pt-4 sm:pt-5 flex flex-col gap-3.5 sm:gap-4">
-                  <ul className="space-y-2">
+                {/* Highlights List with Animated Chevron */}
+                <div className="pt-4 sm:pt-5 flex flex-col gap-4">
+                  <ul className="space-y-2.5">
                     {item.highlights.map((highlight, hIdx) => (
                       <li
                         key={hIdx}
-                        className="flex items-start gap-2.5 text-xs sm:text-sm font-light text-[#D7E2EA]/85 leading-relaxed"
+                        className="group/item flex items-start gap-2.5 text-xs sm:text-sm font-light text-[#D7E2EA]/85 leading-relaxed"
                       >
-                        <span className="text-[#D7E2EA] mt-1 text-xs">▸</span>
-                        <span>{highlight}</span>
+                        <ChevronRight className="w-3.5 h-3.5 text-cyan-400/70 group-hover/item:text-cyan-300 group-hover/item:translate-x-1 flex-shrink-0 mt-1 transition-all duration-200" />
+                        <span className="group-hover/item:text-white transition-colors">
+                          {highlight}
+                        </span>
                       </li>
                     ))}
                   </ul>
 
-                  {/* Skills tags */}
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1.5">
+                  {/* Skills tags with Interactive Glow & Hover Scale */}
+                  <div className="flex flex-wrap gap-2 pt-2">
                     {item.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#1A1A1A] border border-[#D7E2EA]/15 text-[10px] sm:text-xs font-light uppercase tracking-wider text-[#D7E2EA]/80"
+                        className="px-3 py-1 rounded-full bg-[#18181E] border border-white/10 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#D7E2EA]/75 hover:scale-105 hover:bg-white/10 hover:border-cyan-400/40 hover:text-white hover:shadow-[0_0_15px_rgba(79,140,255,0.15)] transition-all duration-200 cursor-default select-none"
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </FadeIn>
           ))}
         </div>
 
-        {/* Education & Leadership Two-Column Grid */}
+        {/* Education & Leadership Two-Column Grid with Spotlight */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10">
           {/* Education */}
-          <FadeIn delay={0.2} y={30}>
-            <div className="rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-5 sm:p-7 md:p-10 h-full flex flex-col justify-between">
+          <FadeIn delay={0.2} y={30} className="h-full">
+            <SpotlightCard
+              spotlightColor="rgba(79, 140, 255, 0.08)"
+              className="group rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-white/15 bg-gradient-to-b from-[#15151A] via-[#111115] to-[#0D0D11] p-5 sm:p-7 md:p-10 h-full flex flex-col justify-between hover:border-white/35 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+            >
               <div>
-                <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block mb-2">
-                  Academic Credentials
-                </span>
-                <h3 className="font-black uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA] mb-6">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70">
+                    Academic Credentials
+                  </span>
+                  <div className="p-2 rounded-xl bg-white/5 text-cyan-400 group-hover:scale-110 transition-transform">
+                    <GraduationCap className="w-4 h-4" />
+                  </div>
+                </div>
+                <h3 className="font-black uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA] group-hover:text-white mb-6 transition-colors">
                   Education
                 </h3>
 
@@ -261,32 +323,49 @@ export function ExperienceSection() {
                   {educationList.map((edu, idx) => (
                     <div
                       key={idx}
-                      className={idx !== 0 ? 'pt-6 border-t border-[#D7E2EA]/10' : ''}
+                      className={`group/edu ${
+                        idx !== 0 ? 'pt-6 border-t border-white/10' : ''
+                      }`}
                     >
-                      <h4 className="font-medium text-base sm:text-lg text-[#D7E2EA]">
-                        {edu.degree}
-                      </h4>
-                      <p className="font-light text-sm text-[#D7E2EA]/75 mt-1">
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <h4 className="font-medium text-base sm:text-lg text-[#D7E2EA] group-hover/edu:text-white transition-colors">
+                          {edu.degree}
+                        </h4>
+                        <span
+                          className={`text-[10px] uppercase font-mono tracking-wider px-2.5 py-0.5 rounded-full border ${edu.badgeColor}`}
+                        >
+                          {edu.status}
+                        </span>
+                      </div>
+                      <p className="font-light text-sm text-[#D7E2EA]/75 mt-1 leading-snug">
                         {edu.institution}
                       </p>
-                      <span className="text-xs font-light text-[#D7E2EA]/70 block mt-1">
+                      <span className="text-xs font-mono text-[#D7E2EA]/60 block mt-1.5">
                         {edu.period}
                       </span>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           </FadeIn>
 
           {/* Leadership & Activities */}
-          <FadeIn delay={0.3} y={30}>
-            <div className="rounded-[32px] sm:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between">
+          <FadeIn delay={0.3} y={30} className="h-full">
+            <SpotlightCard
+              spotlightColor="rgba(155, 123, 255, 0.08)"
+              className="group rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-white/15 bg-gradient-to-b from-[#15151A] via-[#111115] to-[#0D0D11] p-5 sm:p-7 md:p-10 h-full flex flex-col justify-between hover:border-white/35 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+            >
               <div>
-                <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block mb-2">
-                  Campus &amp; Community
-                </span>
-                <h3 className="font-black uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA] mb-6">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70">
+                    Campus &amp; Community
+                  </span>
+                  <div className="p-2 rounded-xl bg-white/5 text-purple-400 group-hover:scale-110 transition-transform">
+                    <Award className="w-4 h-4" />
+                  </div>
+                </div>
+                <h3 className="font-black uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA] group-hover:text-white mb-6 transition-colors">
                   Leadership &amp; Activities
                 </h3>
 
@@ -294,12 +373,19 @@ export function ExperienceSection() {
                   {leadershipList.map((lead, idx) => (
                     <div
                       key={idx}
-                      className={idx !== 0 ? 'pt-6 border-t border-[#D7E2EA]/10' : ''}
+                      className={`group/lead ${
+                        idx !== 0 ? 'pt-6 border-t border-white/10' : ''
+                      }`}
                     >
-                      <h4 className="font-medium text-base sm:text-lg text-[#D7E2EA]">
-                        {lead.title}
-                      </h4>
-                      <p className="text-xs uppercase tracking-wider text-[#D7E2EA]/60 mt-0.5">
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <h4 className="font-medium text-base sm:text-lg text-[#D7E2EA] group-hover/lead:text-white transition-colors">
+                          {lead.title}
+                        </h4>
+                        <span className="text-[10px] uppercase font-mono tracking-wider px-2 py-0.5 rounded-full border border-purple-500/25 bg-purple-500/10 text-purple-300">
+                          {lead.tag}
+                        </span>
+                      </div>
+                      <p className="text-xs uppercase font-mono tracking-wider text-[#D7E2EA]/60 mt-0.5">
                         {lead.organization}
                       </p>
                       <p className="font-light text-xs sm:text-sm text-[#D7E2EA]/80 mt-2 leading-relaxed">
@@ -309,7 +395,7 @@ export function ExperienceSection() {
                   ))}
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           </FadeIn>
         </div>
       </div>

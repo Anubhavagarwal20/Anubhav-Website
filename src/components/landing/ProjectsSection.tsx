@@ -17,22 +17,22 @@ interface ProjectData {
 const projectsList: ProjectData[] = [
   {
     number: '01',
-    name: 'GEO SEO Lab',
-    category: 'SEO & GEO Strategy',
+    name: 'Red Talent Hunt',
+    category: 'Website Development & Digital Marketing',
     description:
-      'Spearheaded Generative Engine Optimization (GEO) research and search intent mapping to boost visibility across conversational AI engines (ChatGPT, Perplexity, Gemini, Google SGE). Engineered semantic keyword clusters, competitive visibility benchmarks, and high-authority educational content architectures.',
-    tags: ['SEO & GEO Strategy', 'AI Search Visibility', 'Perplexity & Gemini Citations', 'Search Intent Clusters', 'Content Architecture'],
+      'Engineered and deployed the corporate web platform for Red Talent Hunt, establishing high-performance responsive web infrastructure, on-page technical SEO, and multi-channel digital acquisition pipelines. Directed brand visibility strategies and content publishing across key digital touchpoints.',
+    tags: ['Website Development', 'Technical SEO', 'Lead Generation Funnels', 'Brand Strategy', 'UI/UX Design'],
     col1Img1: {
-      src: '/projects/geoseolab-2.jpg',
-      alt: 'GEO SEO Lab - AI search intent clusters and search engine share workspace',
+      src: '/projects/talenthunt-2.jpg',
+      alt: 'Red Talent Hunt - Responsive corporate talent acquisition website and portal interface',
     },
     col1Img2: {
-      src: '/projects/geoseolab-3.jpg',
-      alt: 'GEO SEO Lab - AI citation knowledge graph and semantic keyword matrix',
+      src: '/projects/talenthunt-3.jpg',
+      alt: 'Red Talent Hunt - Digital recruitment campaign analytics and candidate engagement dashboard',
     },
     col2Img: {
-      src: '/projects/geoseolab-1.jpg',
-      alt: 'GEO SEO Lab - High-tech AI search visibility and Generative Engine Optimization analytics dashboard',
+      src: '/projects/talenthunt-1.jpg',
+      alt: 'Red Talent Hunt - Executive recruitment web platform dashboard and candidate pipeline interface',
     },
     link: '#experience',
   },

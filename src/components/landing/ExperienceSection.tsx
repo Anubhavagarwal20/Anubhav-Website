@@ -64,11 +64,11 @@ const experienceList: ExperienceItem[] = [
     type: 'Freelance',
     dateNote: 'Dates supplied per initial project agreement',
     highlights: [
-      'Developed and maintained the company website.',
-      'Supported website management, social media content, and digital marketing activities.',
-      'Assisted with promotional campaigns and brand visibility across channels.',
+      'Developed and maintained the Class 12th National Olympiad examination and registration portal.',
+      'Structured student registration funnels, mock exam modules, and syllabus guidelines.',
+      'Executed digital marketing campaigns and outreach across schools to drive Olympiad participant enrollment.',
     ],
-    skills: ['Website Development', 'Website Management', 'Social Media', 'Digital Strategy'],
+    skills: ['Olympiad Web Portal', 'Website Development', 'Student Funnels', 'Digital Marketing'],
   },
   {
     number: '05',

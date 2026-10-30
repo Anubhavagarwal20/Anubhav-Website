@@ -17,43 +17,43 @@ interface ProjectData {
 const projectsList: ProjectData[] = [
   {
     number: '01',
-    name: 'Red Talent Hunt',
-    category: 'Website Development & Digital Marketing',
+    name: 'Ray Talent Hunt',
+    category: 'Class 12th Olympiad Platform & Web Growth',
     description:
-      'Engineered and deployed the corporate web platform for Red Talent Hunt, establishing high-performance responsive web infrastructure, on-page technical SEO, and multi-channel digital acquisition pipelines. Directed brand visibility strategies and content publishing across key digital touchpoints.',
-    tags: ['Website Development', 'Technical SEO', 'Lead Generation Funnels', 'Brand Strategy', 'UI/UX Design'],
+      'Architected and deployed the digital examination and registration portal for Ray Talent Hunt, a premier national Olympiad platform for Class 12th students. Implemented high-performance web architecture, student registration funnels, subject-wise examination guidelines, and targeted digital marketing campaigns that scaled student participation across schools.',
+    tags: ['Class 12th Olympiad', 'EdTech Web Portal', 'Student Registration Funnels', 'Exam System UI', 'Organic Search SEO'],
     col1Img1: {
       src: '/projects/talenthunt-2.jpg',
-      alt: 'Red Talent Hunt - Responsive corporate talent acquisition website and portal interface',
+      alt: 'Ray Talent Hunt - Class 12th National Olympiad student registration portal and guidelines interface',
     },
     col1Img2: {
       src: '/projects/talenthunt-3.jpg',
-      alt: 'Red Talent Hunt - Digital recruitment campaign analytics and candidate engagement dashboard',
+      alt: 'Ray Talent Hunt - EdTech student acquisition funnel and Olympiad participation analytics',
     },
     col2Img: {
       src: '/projects/talenthunt-1.jpg',
-      alt: 'Red Talent Hunt - Executive recruitment web platform dashboard and candidate pipeline interface',
+      alt: 'Ray Talent Hunt - National Olympiad examination management platform, leaderboard, and scholarship dashboard',
     },
     link: '#experience',
   },
   {
     number: '02',
     name: 'Chloia',
-    category: 'Amazon & Shopify E-commerce Operations',
+    category: 'Premium Mobile Covers & E-Commerce Operations',
     description:
-      'Directed end-to-end marketplace operations across Amazon Seller Central and Shopify Plus. Structured high-converting product listings with modular A+ content, parent-child variation modeling, backend keyword attribution, and multi-channel live inventory synchronization.',
-    tags: ['Amazon Seller Central', 'Shopify Plus', 'A+ Content Optimization', 'Catalog Hierarchy', '18.4% Conv Rate'],
+      'Directed marketplace catalog operations and growth strategy for Chloia, a brand specializing in premium smartphone cases and protective mobile covers. Structured high-converting Amazon & Shopify listings with modular A+ content, multi-device model variations (iPhone & flagship Android), backend SEO search terms, and real-time inventory synchronization.',
+    tags: ['Premium Mobile Covers', 'Amazon Seller Central', 'Shopify Plus', 'A+ Listing Optimization', '18.4% Conv Rate', 'MagSafe Cases'],
     col1Img1: {
       src: '/projects/chloia-2.jpg',
-      alt: 'Chloia - High-converting Amazon product listing mockup with A+ content modules',
+      alt: 'Chloia - High-converting Amazon product listing for premium MagSafe mobile covers with modular A+ content',
     },
     col1Img2: {
       src: '/projects/chloia-3.jpg',
-      alt: 'Chloia - Multi-channel storefront live inventory sync and variation matrix',
+      alt: 'Chloia - Multi-channel smartphone case catalog, parent-child variation matrix, and live inventory sync',
     },
     col2Img: {
       src: '/projects/chloia-1.jpg',
-      alt: 'Chloia - Amazon Seller Central and Shopify sales growth and catalog operations dashboard',
+      alt: 'Chloia - Amazon Seller Central and Shopify sales growth dashboard for premium mobile covers',
     },
     link: '#experience',
   },

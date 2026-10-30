@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { Mail, Copy, Check, ArrowUpRight, Calendar, Clock, Video } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Mail, Copy, Check, ArrowUpRight, Calendar, Clock, Video, MapPin } from 'lucide-react';
 import { FadeIn } from '../ui/FadeIn';
+import avatarImg from '../../assets/avatar.png';
 
 function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {
   return (
@@ -17,10 +18,27 @@ function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {
 
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
+  const [localTime, setLocalTime] = useState<string>('');
 
   const targetEmail = 'anubhavagarwal2020@gmail.com';
   const linkedinUrl = 'https://www.linkedin.com/in/anubhavagarwal20/';
   const calendlyUrl = 'https://calendly.com/anubhavagarwal/digital-marketing';
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('en-US', {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+      });
+      setLocalTime(timeStr);
+    };
+    updateTime();
+    const timer = setInterval(updateTime, 10000);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleCopyEmail = async () => {
     try {
@@ -63,43 +81,92 @@ export function ContactSection() {
           {/* Left Column: Direct Info */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-6 sm:gap-8">
             <FadeIn delay={0.1} y={30}>
-              <div className="rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-[#D7E2EA]/20 bg-[#121212] p-5 sm:p-8 md:p-10 flex flex-col gap-6 sm:gap-8 h-full">
-                <div>
-                  <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/70 block mb-2">
-                    Direct Contact
-                  </span>
-                  <h3 className="font-medium uppercase tracking-tight text-2xl sm:text-3xl text-[#D7E2EA]">
-                    Anubhav Agarwal
-                  </h3>
-                  <p className="font-light text-sm sm:text-base text-[#D7E2EA]/75 mt-2 leading-relaxed">
-                    Digital Marketing Specialist based in Delhi NCR, India.
-                  </p>
+              <div className="relative rounded-[28px] sm:rounded-[36px] md:rounded-[40px] border border-white/15 bg-gradient-to-b from-[#16161B] via-[#121215] to-[#0E0E12] p-5 sm:p-8 md:p-9 flex flex-col justify-between gap-6 sm:gap-8 h-full shadow-2xl overflow-hidden group">
+                {/* Atmospheric ambient radiant glow */}
+                <div
+                  className="absolute -top-24 -right-24 w-60 h-60 bg-gradient-to-br from-[#4F8CFF]/15 via-[#4DE2FF]/10 to-transparent rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700"
+                  aria-hidden="true"
+                />
+                <div
+                  className="absolute -bottom-24 -left-24 w-52 h-52 bg-gradient-to-tr from-[#9B7BFF]/10 to-transparent rounded-full blur-3xl pointer-events-none"
+                  aria-hidden="true"
+                />
+
+                {/* Profile Header with Avatar & Live Availability Beacon */}
+                <div className="relative z-10 flex items-center gap-4 pb-5 border-b border-white/10">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl p-[1.5px] bg-gradient-to-br from-white/30 via-white/10 to-transparent flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-full h-full rounded-[14px] overflow-hidden bg-[#18181F] flex items-center justify-center">
+                      <img
+                        src={avatarImg}
+                        alt="Anubhav Agarwal"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {/* Live status dot */}
+                    <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4" title="Online and available">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-[#121215]" />
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className="text-[11px] font-mono uppercase tracking-widest text-[#D7E2EA]/60">
+                        Direct Contact
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono tracking-wider">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        Available
+                      </span>
+                    </div>
+                    <h3 className="font-semibold uppercase tracking-tight text-xl sm:text-2xl md:text-3xl text-[#D7E2EA] truncate">
+                      Anubhav Agarwal
+                    </h3>
+                    <p className="font-light text-xs sm:text-sm text-[#D7E2EA]/75 mt-0.5 leading-snug truncate">
+                      Digital Marketing Specialist &amp; MBA Candidate
+                    </p>
+                  </div>
                 </div>
 
-                {/* Email Box */}
-                <div className="flex flex-col gap-2">
-                  <span className="text-xs font-light uppercase tracking-wider text-[#D7E2EA]/70">
-                    Email Address
-                  </span>
-                  <div className="flex items-center justify-between gap-2 p-3 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15">
-                    <a
-                      href={`mailto:${targetEmail}`}
-                      className="text-xs sm:text-sm font-light text-[#D7E2EA] hover:underline truncate"
-                      aria-label="Send email to Anubhav Agarwal"
-                    >
-                      {targetEmail}
-                    </a>
+                {/* Email Box with Interactive Quick-Copy */}
+                <div className="relative z-10 flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#D7E2EA]/60">
+                      Email Address
+                    </span>
+                    <span className="text-[11px] font-mono text-emerald-400/90 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      Avg. Response: &lt; 24h
+                    </span>
+                  </div>
+                  <div className="group/box relative flex items-center justify-between gap-2 p-3 sm:p-3.5 rounded-2xl bg-[#18181F] border border-white/10 hover:border-white/30 transition-all duration-300">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="p-2 rounded-xl bg-white/5 text-[#D7E2EA]/70 group-hover/box:text-white transition-colors">
+                        <Mail className="w-4 h-4" />
+                      </div>
+                      <a
+                        href={`mailto:${targetEmail}`}
+                        className="text-xs sm:text-sm font-mono text-[#D7E2EA] hover:text-white hover:underline truncate"
+                        aria-label="Send email to Anubhav Agarwal"
+                      >
+                        {targetEmail}
+                      </a>
+                    </div>
                     <button
                       type="button"
                       onClick={handleCopyEmail}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#D7E2EA]/10 hover:bg-[#D7E2EA]/20 text-xs font-medium uppercase tracking-wider text-[#D7E2EA] transition-colors flex-shrink-0 cursor-pointer"
+                      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium uppercase tracking-wider transition-all duration-200 flex-shrink-0 cursor-pointer active:scale-95 ${
+                        copied
+                          ? 'bg-emerald-500 text-[#0C0C0C] shadow-lg shadow-emerald-500/25 font-bold'
+                          : 'bg-white/10 hover:bg-white/20 text-[#D7E2EA] hover:text-white'
+                      }`}
                       title="Copy email to clipboard"
                       aria-label="Copy email address"
                     >
                       {copied ? (
                         <>
-                          <Check className="w-3.5 h-3.5 text-emerald-400" />
-                          <span>Copied</span>
+                          <Check className="w-3.5 h-3.5 text-[#0C0C0C]" />
+                          <span>Copied!</span>
                         </>
                       ) : (
                         <>
@@ -111,9 +178,9 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                {/* Primary & Secondary CTAs / Links */}
-                <div className="flex flex-col gap-3">
-                  <span className="text-xs font-light uppercase tracking-wider text-[#D7E2EA]/70">
+                {/* Primary & Secondary CTAs / Links with Brand Glow Micro-Interactions */}
+                <div className="relative z-10 flex flex-col gap-2.5">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#D7E2EA]/60">
                     Professional Networks
                   </span>
                   <div className="flex flex-col sm:flex-row gap-3">
@@ -121,40 +188,55 @@ export function ContactSection() {
                       href={linkedinUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 hover:border-[#D7E2EA]/50 transition-colors"
+                      className="group/link flex-1 flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#18181F] border border-white/10 hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 hover:shadow-[0_0_25px_rgba(10,102,194,0.18)] transition-all duration-300"
                       aria-label="View LinkedIn Profile of Anubhav Agarwal (opens in new tab)"
                     >
-                      <div className="flex items-center gap-2.5">
-                        <LinkedinIcon className="w-4 h-4 text-[#D7E2EA]" />
-                        <span className="text-xs sm:text-sm font-medium uppercase tracking-wider text-[#D7E2EA]">
-                          View LinkedIn Profile
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-xl bg-white/5 group-hover/link:bg-[#0A66C2]/20 text-[#D7E2EA] group-hover/link:text-[#4F8CFF] transition-colors">
+                          <LinkedinIcon className="w-4 h-4" />
+                        </div>
+                        <span className="text-xs sm:text-sm font-medium uppercase tracking-wider text-[#D7E2EA] group-hover/link:text-white transition-colors">
+                          LinkedIn
                         </span>
                       </div>
-                      <ArrowUpRight className="w-4 h-4 text-[#D7E2EA]/60" />
+                      <ArrowUpRight className="w-4 h-4 text-[#D7E2EA]/50 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-200" />
                     </a>
 
                     <a
                       href={`mailto:${targetEmail}`}
-                      className="flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#1A1A1A] border border-[#D7E2EA]/15 hover:border-[#D7E2EA]/50 transition-colors"
+                      className="group/email flex-1 flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#18181F] border border-white/10 hover:border-white/40 hover:bg-white/[0.08] hover:shadow-[0_0_25px_rgba(255,255,255,0.12)] transition-all duration-300"
                       aria-label="Email Anubhav Agarwal directly"
                     >
-                      <div className="flex items-center gap-2.5">
-                        <Mail className="w-4 h-4 text-[#D7E2EA]" />
-                        <span className="text-xs sm:text-sm font-medium uppercase tracking-wider text-[#D7E2EA]">
-                          Email
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-xl bg-white/5 group-hover/email:bg-white/10 text-[#D7E2EA] group-hover/email:text-white transition-colors">
+                          <Mail className="w-4 h-4" />
+                        </div>
+                        <span className="text-xs sm:text-sm font-medium uppercase tracking-wider text-[#D7E2EA] group-hover/email:text-white transition-colors">
+                          Direct Email
                         </span>
                       </div>
-                      <ArrowUpRight className="w-4 h-4 text-[#D7E2EA]/60" />
+                      <ArrowUpRight className="w-4 h-4 text-[#D7E2EA]/50 group-hover/email:text-white group-hover/email:translate-x-0.5 group-hover/email:-translate-y-0.5 transition-all duration-200" />
                     </a>
                   </div>
                 </div>
 
-                {/* Location / Status badge */}
-                <div className="pt-4 border-t border-[#D7E2EA]/10 flex items-center justify-between text-xs font-light text-[#D7E2EA]/60">
-                  <span>Location: Delhi NCR, India</span>
+                {/* Location / Status badge with Live Indian Standard Time */}
+                <div className="relative z-10 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs font-mono text-[#D7E2EA]/65">
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-[#D7E2EA]/50" />
+                    <span>Delhi NCR, India</span>
+                    {localTime && (
+                      <span className="text-white/40">• {localTime} IST</span>
+                    )}
+                  </div>
                   <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Open to opportunities
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                    </span>
+                    <span className="text-emerald-400/90 font-sans uppercase tracking-wider text-[11px]">
+                      Open to opportunities
+                    </span>
                   </span>
                 </div>
               </div>

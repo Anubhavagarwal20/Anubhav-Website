@@ -1,7 +1,5 @@
 # robots.txt for Anubhav Agarwal Portfolio
-# Instructions: Once your production domain is active, uncomment the Sitemap directive and update the URL.
-
 User-agent: *
 Allow: /
 
-# Sitemap: https://YOUR-PRODUCTION-DOMAIN.com/sitemap.xml
+Sitemap: https://anubhavgrow.vercel.app/sitemap.xml

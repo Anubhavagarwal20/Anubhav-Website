@@ -24,15 +24,15 @@ const projectsList: ProjectData[] = [
       'Architected and deployed the digital examination and registration portal for Ray Talent Hunt, a premier national Olympiad platform for Class 12th students. Implemented high-performance web architecture, student registration funnels, subject-wise examination guidelines, and targeted digital marketing campaigns that scaled student participation across schools.',
     tags: ['Class 12th Olympiad', 'EdTech Web Portal', 'Student Registration Funnels', 'Exam System UI', 'Organic Search SEO'],
     col1Img1: {
-      src: '/projects/talenthunt-2.jpg',
+      src: '/projects/talenthunt-2.webp',
       alt: 'Ray Talent Hunt - Class 12th National Olympiad student registration portal and guidelines interface',
     },
     col1Img2: {
-      src: '/projects/talenthunt-3.jpg',
+      src: '/projects/talenthunt-3.webp',
       alt: 'Ray Talent Hunt - EdTech student acquisition funnel and Olympiad participation analytics',
     },
     col2Img: {
-      src: '/projects/talenthunt-1.jpg',
+      src: '/projects/talenthunt-1.webp',
       alt: 'Ray Talent Hunt - National Olympiad examination management platform, leaderboard, and scholarship dashboard',
     },
     link: '#experience',
@@ -45,15 +45,15 @@ const projectsList: ProjectData[] = [
       'Directed marketplace catalog operations and growth strategy for Chloia, a brand specializing in premium smartphone cases and protective mobile covers. Structured high-converting Amazon & Shopify listings with modular A+ content, multi-device model variations (iPhone & flagship Android), backend SEO search terms, and real-time inventory synchronization.',
     tags: ['Premium Mobile Covers', 'Amazon Seller Central', 'Shopify Plus', 'A+ Listing Optimization', '18.4% Conv Rate', 'MagSafe Cases'],
     col1Img1: {
-      src: '/projects/chloia-2.jpg',
+      src: '/projects/chloia-2.webp',
       alt: 'Chloia - High-converting Amazon product listing for premium MagSafe mobile covers with modular A+ content',
     },
     col1Img2: {
-      src: '/projects/chloia-3.jpg',
+      src: '/projects/chloia-3.webp',
       alt: 'Chloia - Multi-channel smartphone case catalog, parent-child variation matrix, and live inventory sync',
     },
     col2Img: {
-      src: '/projects/chloia-1.jpg',
+      src: '/projects/chloia-1.webp',
       alt: 'Chloia - Amazon Seller Central and Shopify sales growth dashboard for premium mobile covers',
     },
     link: '#experience',
@@ -66,15 +66,15 @@ const projectsList: ProjectData[] = [
       'Architected performance marketing campaigns and paid social funnels, delivering a verified 2.0X ROAS on Meta Ads. Produced 20+ AI-assisted high-converting product creatives for ethnic wear collections and managed day-to-day e-commerce storefront operations.',
     tags: ['Meta Ads Manager', '2.0X ROAS Delivered', 'AI Product Creatives', 'Ethnic Fashion E-Commerce', 'Funnel Optimization'],
     col1Img1: {
-      src: '/projects/ganpati-2.jpg',
+      src: '/projects/ganpati-2.webp',
       alt: 'Sri Ganpati Collection - Curated AI-assisted ethnic fashion ad creative grid',
     },
     col1Img2: {
-      src: '/projects/ganpati-3.jpg',
+      src: '/projects/ganpati-3.webp',
       alt: 'Sri Ganpati Collection - Mobile e-commerce store interface and Instagram Shop checkout',
     },
     col2Img: {
-      src: '/projects/ganpati-1.jpg',
+      src: '/projects/ganpati-1.webp',
       alt: 'Sri Ganpati Collection - Meta Ads Manager dashboard showcasing 2.0X ROAS performance metrics',
     },
     link: '#experience',
@@ -171,6 +171,9 @@ function Card({ project, index, totalCards }: CardProps) {
                 src={project.col1Img1.src}
                 alt={project.col1Img1.alt}
                 loading="lazy"
+                decoding="async"
+                width={480}
+                height={200}
                 className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px] group-hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -181,6 +184,9 @@ function Card({ project, index, totalCards }: CardProps) {
                 src={project.col1Img2.src}
                 alt={project.col1Img2.alt}
                 loading="lazy"
+                decoding="async"
+                width={480}
+                height={230}
                 className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px] group-hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -192,6 +198,9 @@ function Card({ project, index, totalCards }: CardProps) {
               src={project.col2Img.src}
               alt={project.col2Img.alt}
               loading="lazy"
+              decoding="async"
+              width={680}
+              height={450}
               className="w-full h-full object-cover rounded-[18px] sm:rounded-[24px] md:rounded-[32px] group-hover:scale-105 transition-transform duration-500"
             />
           </div>

@@ -1,31 +1,31 @@
 import { useRef, useState, useEffect } from 'react';
 
-const allGifs: string[] = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+const allPreviews: string[] = [
+  '/marquee/preview-01.webp',
+  '/marquee/preview-02.webp',
+  '/marquee/preview-03.webp',
+  '/marquee/preview-04.webp',
+  '/marquee/preview-05.webp',
+  '/marquee/preview-06.webp',
+  '/marquee/preview-07.webp',
+  '/marquee/preview-08.webp',
+  '/marquee/preview-09.webp',
+  '/marquee/preview-10.webp',
+  '/marquee/preview-11.webp',
+  '/marquee/preview-12.webp',
+  '/marquee/preview-13.webp',
+  '/marquee/preview-14.webp',
+  '/marquee/preview-15.webp',
+  '/marquee/preview-16.webp',
+  '/marquee/preview-17.webp',
+  '/marquee/preview-18.webp',
+  '/marquee/preview-19.webp',
+  '/marquee/preview-20.webp',
+  '/marquee/preview-21.webp',
 ];
 
-const row1Gifs = allGifs.slice(0, 11);
-const row2Gifs = allGifs.slice(11);
+const row1Gifs = allPreviews.slice(0, 11);
+const row2Gifs = allPreviews.slice(11);
 
 // Tripled lists for seamless scroll length
 const tripledRow1 = [...row1Gifs, ...row1Gifs, ...row1Gifs];
@@ -87,6 +87,7 @@ export function MarqueeSection() {
                 src={src}
                 alt="Creative digital marketing and web interface preview"
                 loading="lazy"
+                decoding="async"
                 width={400}
                 height={255}
                 className="w-full h-full object-cover rounded-2xl"
@@ -112,6 +113,7 @@ export function MarqueeSection() {
                 src={src}
                 alt="Interactive digital campaign visual preview"
                 loading="lazy"
+                decoding="async"
                 width={400}
                 height={255}
                 className="w-full h-full object-cover rounded-2xl"

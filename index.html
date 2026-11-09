@@ -1,14 +1,36 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVHQVPQXTZ"></script>
+    <!-- Preload Critical LCP Image for Instant Discovery -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/avatar.webp"
+      fetchpriority="high"
+    />
+
+    <!-- Google tag (gtag.js) - Google Analytics (Non-blocking / Idle Loaded) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-NVHQVPQXTZ');
+      function initGA() {
+        if (window.__ga_initialized) return;
+        window.__ga_initialized = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-NVHQVPQXTZ';
+        document.head.appendChild(s);
+        gtag('config', 'G-NVHQVPQXTZ');
+      }
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() { setTimeout(initGA, 1800); }, { timeout: 4000 });
+      } else {
+        window.addEventListener('load', function() { setTimeout(initGA, 1800); });
+      }
     </script>
 
     <!-- Google Search Console verification (Auto-verified via GA4 or add token below) -->
@@ -62,13 +84,26 @@
     />
     <meta name="twitter:image" content="https://anubhavgrow.vercel.app/avatar.jpg" />
 
-    <!-- Google Fonts: Kanit (weights 300-900) -->
+    <!-- Google Fonts: Kanit (Optimized weights, Non-render-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;900&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;900&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;900&display=swap"
+      />
+    </noscript>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

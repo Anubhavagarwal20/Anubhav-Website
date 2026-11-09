@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { FadeIn } from '../ui/FadeIn';
 import { SpotlightCard } from '../ui/SpotlightCard';
-import avatarImg from '../../assets/avatar.png';
+import avatarImg from '../../assets/avatar.webp';
 import { trackAnalytics } from '../../utils/analytics';
 
 function LinkedinIcon({ className = 'w-4 h-4' }: { className?: string }) {

@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { FadeIn } from '../ui/FadeIn';
 import { ContactButton } from '../ui/ContactButton';
 import { Magnet } from '../ui/Magnet';
-import heroAvatar from '../../assets/avatar.png';
+import heroAvatar from '../../assets/avatar.webp';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -117,26 +117,29 @@ export function HeroSection() {
         </FadeIn>
       </div>
 
-      {/* ─── Hero Portrait ─── */}
+      {/* ─── Hero Portrait (LCP Element — Render Immediately) ─── */}
       <div className="absolute left-1/2 -translate-x-1/2 z-10 top-[50%] -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-auto flex justify-center items-end">
-        <FadeIn delay={0.6} y={30}>
-          <Magnet
-            padding={120}
-            strength={2.5}
-            activeTransition="transform 0.3s ease-out"
-            inactiveTransition="transform 0.6s ease-in-out"
-          >
+        <Magnet
+          padding={120}
+          strength={2.5}
+          activeTransition="transform 0.3s ease-out"
+          inactiveTransition="transform 0.6s ease-in-out"
+        >
+          <picture>
+            <source srcSet="/avatar.webp" type="image/webp" />
             <img
               src={heroAvatar}
               alt="Anubhav Agarwal — 3D Avatar Portrait"
               width={520}
               height={520}
               fetchPriority="high"
+              loading="eager"
+              decoding="async"
               className="w-[210px] sm:w-[320px] md:w-[400px] lg:w-[460px] xl:w-[520px] max-h-[44vh] sm:max-h-[52vh] md:max-h-[60vh] lg:max-h-[68vh] object-contain select-none pointer-events-none drop-shadow-2xl"
               draggable={false}
             />
-          </Magnet>
-        </FadeIn>
+          </picture>
+        </Magnet>
       </div>
 
       {/* ─── Bottom Bar ─── */}

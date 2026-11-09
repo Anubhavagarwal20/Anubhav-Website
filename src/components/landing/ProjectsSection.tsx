@@ -107,10 +107,10 @@ function Card({ project, index, totalCards }: CardProps) {
           scale,
           top: `${index * 20}px`,
         }}
-        className="relative w-full rounded-[28px] sm:rounded-[36px] md:rounded-[48px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 lg:p-9 flex flex-col justify-between gap-5 sm:gap-6 overflow-hidden shadow-2xl"
+        className="relative w-full rounded-[28px] sm:rounded-[36px] md:rounded-[48px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-5 sm:p-7 md:p-8 lg:p-9 xl:p-10 flex flex-col justify-between gap-4 sm:gap-5 md:gap-6 overflow-hidden shadow-2xl"
       >
         {/* ─── Top Row: Meta & Header ─── */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-3 border-b border-[#D7E2EA]/10">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3.5 sm:gap-4 pb-3 sm:pb-4 border-b border-[#D7E2EA]/10">
           <div className="flex items-start sm:items-center gap-3.5 sm:gap-6">
             {/* Number (large) */}
             <span
@@ -135,22 +135,24 @@ function Card({ project, index, totalCards }: CardProps) {
           <a
             href={project.link}
             onClick={() => trackAnalytics.projectView(project.name, project.link)}
-            className="w-full sm:w-auto text-center inline-flex items-center justify-center rounded-full border border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-wider px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm transition-colors duration-200 hover:bg-[#D7E2EA] hover:text-[#0C0C0C] active:scale-[0.98] select-none whitespace-nowrap self-start lg:self-center"
+            className="w-full sm:w-auto text-center inline-flex items-center justify-center rounded-full border border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-wider px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm transition-colors duration-200 hover:bg-[#D7E2EA] hover:text-[#0C0C0C] active:scale-[0.98] select-none whitespace-nowrap self-start sm:self-center"
           >
             View Experience Details
           </a>
         </div>
 
         {/* ─── Description & Tags ─── */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
-          <p className="text-xs sm:text-sm font-light text-[#D7E2EA]/80 leading-relaxed max-w-3xl">
-            {project.description}
-          </p>
-          <div className="flex flex-wrap gap-1.5 sm:gap-2 flex-shrink-0">
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4 lg:gap-8">
+          <div className="flex-1 max-w-full lg:max-w-2xl xl:max-w-3xl">
+            <p className="text-[13px] sm:text-sm md:text-[14.5px] lg:text-[15px] xl:text-base font-normal sm:font-light text-[#D7E2EA]/85 leading-relaxed sm:leading-relaxed text-left text-pretty">
+              {project.description}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 flex-shrink-0 lg:max-w-md xl:max-w-lg lg:justify-end pt-0.5">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 rounded-full bg-[#161616] border border-[#D7E2EA]/15 text-[10px] sm:text-xs font-light uppercase tracking-wider text-[#D7E2EA]/75"
+                className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#161616] border border-[#D7E2EA]/15 hover:border-[#D7E2EA]/35 text-[10px] sm:text-xs font-light uppercase tracking-wider text-[#D7E2EA]/75 hover:text-[#D7E2EA] transition-colors"
               >
                 {tag}
               </span>
@@ -216,7 +218,7 @@ export function ProjectsSection() {
           >
             Projects
           </h2>
-          <p className="text-center font-light uppercase tracking-widest text-[#D7E2EA]/60 text-xs sm:text-sm md:text-base mb-12 sm:mb-18 md:mb-24 max-w-xl mx-auto">
+          <p className="text-center font-light uppercase tracking-widest text-[#D7E2EA]/65 text-xs sm:text-sm md:text-base mb-10 sm:mb-14 md:mb-18 lg:mb-20 max-w-2xl mx-auto px-4 leading-relaxed text-pretty">
             Selected client, freelance, and operational digital marketing engagements
           </p>
         </FadeIn>

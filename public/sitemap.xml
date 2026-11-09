@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://anubhavgrow.vercel.app/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://anubhavgrow.vercel.app/avatar.jpg</image:loc>
+      <image:title>Anubhav Agarwal — Digital Marketing Specialist Portfolio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://anubhavgrow.vercel.app/projects/talenthunt-1.jpg</image:loc>
+      <image:title>Ray Talent Hunt — National Olympiad Web Platform Case Study</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://anubhavgrow.vercel.app/projects/chloia-1.jpg</image:loc>
+      <image:title>Chloia — Premium Mobile Covers E-Commerce Operations Case Study</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://anubhavgrow.vercel.app/projects/ganpati-1.jpg</image:loc>
+      <image:title>Sri Ganpati Collection — 2.0X ROAS Meta Ads Case Study</image:title>
+    </image:image>
   </url>
 </urlset>

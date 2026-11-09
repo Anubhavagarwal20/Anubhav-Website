@@ -479,7 +479,7 @@ export function ContactSection() {
         {/* Minimal Footer */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#D7E2EA]/75">
           <p>© {new Date().getFullYear()} Anubhav Agarwal. All rights reserved.</p>
-          <div className="flex items-center gap-6 uppercase tracking-wider">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 uppercase tracking-wider">
             <a href="#about" className="hover:text-white transition-colors">
               About
             </a>
@@ -494,6 +494,16 @@ export function ContactSection() {
             </a>
             <a href="#contact" className="hover:text-white transition-colors">
               Contact
+            </a>
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyan-400/80 hover:text-cyan-300 transition-colors flex items-center gap-1 font-mono lowercase"
+              title="View XML Sitemap"
+            >
+              <span>sitemap.xml</span>
+              <ArrowUpRight className="w-3 h-3" />
             </a>
           </div>
         </div>
